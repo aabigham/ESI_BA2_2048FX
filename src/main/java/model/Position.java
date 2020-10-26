@@ -1,59 +1,59 @@
 package model;
 
 /**
- * The position on the board which has x and y axis.
+ * The position on the board which has row and col axis.
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
 public class Position {
 
-    private int x, y;
+    private int row, col;
 
     /**
      * Constructor of Position.
      *
-     * @param x the x axis.
-     * @param y the y axis.
+     * @param x the row axis.
+     * @param y the col axis.
      */
     public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.row = x;
+        this.col = y;
     }
 
     /**
-     * Getter of the x axis.
+     * Getter of the row axis.
      *
-     * @return the x axis.
+     * @return the row axis.
      */
-    public int getX() {
-        return x;
+    public int getRow() {
+        return row;
     }
 
     /**
-     * Setrer of the x axis.
+     * Setrer of the row axis.
      *
-     * @param x the new x axis.
+     * @param row the new row axis.
      */
-    public void setX(int x) {
-        this.x = x;
+    public void setRow(int row) {
+        this.row = row;
     }
 
     /**
-     * Getter of the y axis.
+     * Getter of the col axis.
      *
-     * @return the y axis.
+     * @return the col axis.
      */
-    public int getY() {
-        return y;
+    public int getCol() {
+        return col;
     }
 
     /**
-     * Setrer of the y axis.
+     * Setrer of the col axis.
      *
-     * @param y the new y axis.
+     * @param col the new col axis.
      */
-    public void setY(int y) {
-        this.y = y;
+    public void setCol(int col) {
+        this.col = col;
     }
 
 }
