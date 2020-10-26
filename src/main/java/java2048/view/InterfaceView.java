@@ -1,6 +1,6 @@
-package view;
+package java2048.view;
 
-import model.Board;
+import java2048.model.Board;
 
 /**
  * Interface of view.

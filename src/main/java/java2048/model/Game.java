@@ -1,4 +1,4 @@
-package model;
+package java2048.model;
 
 /**
  * The Game class gathers the necessary elements for the game to present a
@@ -18,6 +18,7 @@ public class Game implements Model {
     @Override
     public void initGame() {
         this.board = new Board();
+        this.board.initialize();
         this.status = GameStatus.IN_PROGRESS;
     }
 

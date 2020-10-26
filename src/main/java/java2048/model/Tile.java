@@ -1,4 +1,4 @@
-package model;
+package java2048.model;
 
 /**
  * A tile is represented in the game board, it has a integer value and a

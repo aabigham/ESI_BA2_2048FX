@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package java2048.controller;
 
-import model.Game;
-import view.InterfaceView;
+import java2048.model.Game;
+import java2048.view.InterfaceView;
 
 /**
  *

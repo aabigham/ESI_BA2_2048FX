@@ -1,7 +1,7 @@
-package view;
+package java2048.view;
 
-import model.Board;
-import model.Tile;
+import java2048.model.Board;
+import java2048.model.Tile;
 
 /**
  * The view of the game via the console window.
@@ -25,9 +25,13 @@ public class ConsoleView implements InterfaceView {
                 if (tile == null) {
                     System.out.print("    ");
                 } else if (tile.getValue() < 10) {
+                    System.out.print(tile.getValue() + "   ");
+                } else if (tile.getValue() >= 10 && tile.getValue() <= 99) {
                     System.out.print(tile.getValue() + "  ");
-                } else {
+                } else if (tile.getValue() >= 99 && tile.getValue() <= 999) {
                     System.out.print(tile.getValue() + " ");
+                } else {
+                    System.out.print(tile.getValue());
                 }
                 System.out.print(" | ");
             }

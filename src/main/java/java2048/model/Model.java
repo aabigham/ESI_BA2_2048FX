@@ -1,4 +1,4 @@
-package model;
+package java2048.model;
 
 /**
  * Model interface.

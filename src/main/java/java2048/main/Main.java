@@ -1,8 +1,8 @@
-package main;
+package java2048.main;
 
-import controller.Controller;
-import model.Game;
-import view.ConsoleView;
+import java2048.controller.Controller;
+import java2048.model.Game;
+import java2048.view.ConsoleView;
 
 /**
  * Main class of the game.
