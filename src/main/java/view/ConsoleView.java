@@ -1,7 +1,6 @@
 package view;
 
 import model.Board;
-import model.Position;
 import model.Tile;
 
 /**
@@ -22,7 +21,7 @@ public class ConsoleView implements InterfaceView {
             System.out.println("+------+------+------+------+");
             System.out.print("| ");
             for (int j = 0; j < board.getSIDE(); j++) {
-                Tile tile = board.getTileAt(new Position(i, j));
+                Tile tile = board.getTileAt(i, j);
                 if (tile == null) {
                     System.out.print("    ");
                 } else if (tile.getValue() < 10) {

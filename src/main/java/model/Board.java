@@ -24,8 +24,8 @@ public class Board {
      * @param position the position in which the tile is placed.
      * @return the tile in the position in parameter.
      */
-    public Tile getTileAt(Position position) {
-        return tiles[position.getRow()][position.getCol()];
+    public Tile getTileAt(int row, int col) {
+        return tiles[row][col];
     }
 
     /**
