@@ -26,26 +26,6 @@ public enum Direction {
     }
 
     /**
-     * Function that returns the opposite direction of the current one.
-     *
-     * @return the opposite direction.
-     */
-    public Direction opposite() {
-        switch (this) {
-            case NORTH:
-                return SOUTH;
-            case SOUTH:
-                return NORTH;
-            case EAST:
-                return WEST;
-            case WEST:
-                return EAST;
-            default:
-                throw new AssertionError();
-        }
-    }
-
-    /**
      * Get the value of deltaRow
      *
      * @return the value of deltaRow
