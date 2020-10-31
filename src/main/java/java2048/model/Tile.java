@@ -9,6 +9,7 @@ package java2048.model;
 public class Tile {
 
     private int value;
+    private boolean blocked;
 
     /**
      * Constructor of tile.
@@ -17,6 +18,7 @@ public class Tile {
      */
     public Tile(int value) {
         this.value = value;
+        this.blocked = false;
     }
 
     /**
@@ -35,6 +37,24 @@ public class Tile {
      */
     public void setValue(int value) {
         this.value = value;
+    }
+
+    /**
+     * Getter of blocked.
+     *
+     * @return true if the tile is blocked, false otherwise.
+     */
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    /**
+     * Setter of blocked.
+     *
+     * @param blocked the new status of the tile.
+     */
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
 
 }
