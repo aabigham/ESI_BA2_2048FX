@@ -1,6 +1,6 @@
-package java2048.view;
+package com.java2048.view;
 
-import java2048.model.Board;
+import com.java2048.model.Board;
 
 /**
  * Interface of view.
@@ -10,16 +10,16 @@ import java2048.model.Board;
 public interface InterfaceView {
 
     /**
-     * Displays the game board.
+     * Displays the game board via console.
      *
-     * @param board the board to display.
+     * @param board the board to display to the player
      */
     void displayBoard(Board board);
 
     /**
      * Display a message to the player's attention.
      *
-     * @param message a message for the player.
+     * @param message the message to display to the player
      */
     void displayMessage(String message);
 }

@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package java2048.controller;
+package com.java2048.controller;
 
 import java.util.Scanner;
-import java2048.model.Board;
-import java2048.model.Direction;
-import java2048.model.Game;
-import java2048.view.InterfaceView;
+import com.java2048.model.Board;
+import com.java2048.model.Direction;
+import com.java2048.model.Game;
+import com.java2048.view.InterfaceView;
 
 /**
  *
@@ -23,8 +18,8 @@ public class Controller {
     /**
      * Constructor of controller.
      *
-     * @param game the game.
-     * @param consoleView the console view.
+     * @param game the game
+     * @param consoleView the console view
      */
     public Controller(Game game, InterfaceView consoleView) {
         this.game = game;

@@ -1,4 +1,4 @@
-package java2048.model;
+package com.java2048.model;
 
 /**
  * The Game class gathers the necessary elements for the game to present a

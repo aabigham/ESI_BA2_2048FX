@@ -1,6 +1,6 @@
-package java2048.model;
+package com.java2048.model;
 
-import static java2048.model.Direction.*;
+import static com.java2048.model.Direction.*;
 
 /**
  * The game board. It is filled with tiles.

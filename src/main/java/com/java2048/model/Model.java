@@ -1,14 +1,14 @@
-package java2048.model;
+package com.java2048.model;
 
 /**
- * Model interface.
+ * Interface of model.
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
 public interface Model {
 
     /**
-     * Starts the game.
+     * This method starts the game.
      */
     void initGame();
 

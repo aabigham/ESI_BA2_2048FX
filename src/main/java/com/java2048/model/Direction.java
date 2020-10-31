@@ -1,4 +1,4 @@
-package java2048.model;
+package com.java2048.model;
 
 /**
  * Directions in which the board is going to slide the tiles to.
@@ -17,8 +17,8 @@ public enum Direction {
     /**
      * Constructor of Direction.
      *
-     * @param deltaRow the delta row.
-     * @param deltaCol the delta column.
+     * @param deltaRow the delta row
+     * @param deltaCol the delta column
      */
     private Direction(int deltaRow, int deltaCol) {
         this.deltaRow = deltaRow;
@@ -28,7 +28,7 @@ public enum Direction {
     /**
      * Get the value of deltaRow
      *
-     * @return the value of deltaRow
+     * @return the value of deltaRow.
      */
     public int getDeltaRow() {
         return deltaRow;
@@ -37,7 +37,7 @@ public enum Direction {
     /**
      * Get the value of deltaCol
      *
-     * @return the value of deltaCol
+     * @return the value of deltaCol.
      */
     public int getDeltaCol() {
         return deltaCol;
