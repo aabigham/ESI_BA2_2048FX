@@ -46,10 +46,10 @@ public class Game implements Model {
      */
     @Override
     public void updateStatus() {
-        if (board.check2048()) {
-            this.status = GameStatus.WIN;
-        } else if (board.getNbFreeTiles() == 0) {
+        if (board.getNbFreeTiles() == 0) {
             this.status = GameStatus.FAIL;
+        } else if (board.check2048()) {
+            this.status = GameStatus.WIN;
         }
     }
 
@@ -69,6 +69,15 @@ public class Game implements Model {
      */
     public Board getBoard() {
         return board;
+    }
+
+    /**
+     * Getter of the game status.
+     *
+     * @return the game status.
+     */
+    public GameStatus getStatus() {
+        return status;
     }
 
 }

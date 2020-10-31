@@ -5,6 +5,7 @@ import com.java2048.model.Board;
 import com.java2048.model.Direction;
 import com.java2048.model.Game;
 import com.java2048.model.GameStatus;
+import static com.java2048.model.GameStatus.*;
 import com.java2048.view.InterfaceView;
 
 /**
@@ -32,10 +33,16 @@ public class Controller {
 
         while (game.isInProgress()) {
             consoleView.displayBoard(game.getBoard());
-            game.updateStatus();
-
             game.move(askDirection());
             game.addRandomTile();
+            game.updateStatus();
+        }
+
+        consoleView.displayBoard(game.getBoard());
+        if (game.getStatus().equals(WIN)) {
+            consoleView.displayMessage("You won !");
+        } else if (game.getStatus().equals(FAIL)) {
+            consoleView.displayMessage("You lose !");
         }
     }
 
