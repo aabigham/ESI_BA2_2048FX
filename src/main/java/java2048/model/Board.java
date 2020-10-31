@@ -34,11 +34,10 @@ public class Board {
         if (nbFreeTiles != 0) {
             int cpt = 1;
             int random_tile = (int) (Math.random() * (nbFreeTiles - 1 + 1) + 1);
-            int value = (int) (Math.random() * (10 - 0 + 1) + 0) == 0 ? 4 : 2;
             for (int i = 0; i < SIDE; i++) {
                 for (int j = 0; j < SIDE; j++) {
                     if (cpt == random_tile) {
-                        this.tiles[i][j] = new Tile(value);
+                        this.tiles[i][j] = new Tile(2);
                     }
                     cpt++;
                 }
