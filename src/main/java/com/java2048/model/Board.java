@@ -13,7 +13,16 @@ public class Board {
     private final int SIDE = 4;
 
     /**
-     * Constructor of the board.
+     * Constructor of board.
+     *
+     * @param tiles the tiles on the board
+     */
+    public Board(Tile[][] tiles) {
+        this.tiles = tiles;
+    }
+
+    /**
+     * Default constructor of board.
      */
     public Board() {
     }
