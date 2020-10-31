@@ -6,6 +6,7 @@
 package java2048.controller;
 
 import java.util.Scanner;
+import java2048.model.Board;
 import java2048.model.Direction;
 import java2048.model.Game;
 import java2048.view.InterfaceView;
@@ -32,7 +33,22 @@ public class Controller {
 
     public void startGame() {
         game.initGame();
-        consoleView.displayBoard(game.getBoard());
+        Board board = game.getBoard();
+
+        consoleView.displayBoard(board);
+        System.out.println(" ");
+        board.moveTiles(Direction.DOWN);
+        consoleView.displayBoard(board);
+        System.out.println(" ");
+        board.moveTiles(Direction.UP);
+        consoleView.displayBoard(board);
+        System.out.println(" ");
+        board.moveTiles(Direction.LEFT);
+        consoleView.displayBoard(board);
+        System.out.println(" ");
+        board.moveTiles(Direction.RIGHT);
+        consoleView.displayBoard(board);
+        System.out.println(" ");
     }
 
     /**
@@ -53,13 +69,13 @@ public class Controller {
 
         switch (c) {
             case 'z':
-                return Direction.NORTH;
+                return Direction.UP;
             case 'q':
-                return Direction.WEST;
+                return Direction.LEFT;
             case 's':
-                return Direction.EAST;
+                return Direction.DOWN;
             case 'd':
-                return Direction.EAST;
+                return Direction.RIGHT;
             default:
                 throw new AssertionError();
         }

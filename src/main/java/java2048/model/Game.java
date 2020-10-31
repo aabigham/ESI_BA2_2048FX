@@ -23,16 +23,6 @@ public class Game implements Model {
     }
 
     /**
-     * Moves the tiles in the direction entered in parameter.
-     *
-     * @param direction the direction.
-     */
-    @Override
-    public void move(int direction) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
      * Getter of board.
      *
      * @return the board of the game.

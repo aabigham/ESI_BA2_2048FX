@@ -12,10 +12,4 @@ public interface Model {
      */
     void initGame();
 
-    /**
-     * Moves the tiles in the direction entered in parameter.
-     *
-     * @param direction the direction.
-     */
-    void move(int direction);
 }

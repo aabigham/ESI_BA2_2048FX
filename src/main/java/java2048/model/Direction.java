@@ -6,10 +6,10 @@ package java2048.model;
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
 public enum Direction {
-    NORTH(-1, 0),
-    SOUTH(1, 0),
-    EAST(0, 1),
-    WEST(0, -1);
+    UP(-1, 0),
+    DOWN(1, 0),
+    RIGHT(0, 1),
+    LEFT(0, -1);
 
     private final int deltaRow;
     private final int deltaCol;

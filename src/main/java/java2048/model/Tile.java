@@ -22,6 +22,16 @@ public class Tile {
     }
 
     /**
+     * Checks if a tile can merge with another one.
+     *
+     * @param tile the tile we want to check
+     * @return true if the tile can merge together, false otherwise.
+     */
+    public boolean canMergeWith(Tile tile) {
+        return this.value == tile.getValue();
+    }
+
+    /**
      * Getter of value.
      *
      * @return the value of the tile.
