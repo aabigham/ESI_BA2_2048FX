@@ -12,4 +12,21 @@ public interface Model {
      */
     void initGame();
 
+    /**
+     * Moves the all the tiles in the desired direction.
+     *
+     * @param direction the direction in which to move the tiles
+     */
+    void move(Direction direction);
+
+    /**
+     * This method adds a random tile on the board. Can be a 2 or a 4, 4 has one
+     * out of ten chances to be picked.
+     */
+    void addRandomTile();
+
+    /**
+     * Updates the status of the game.
+     */
+    public void updateStatus();
 }

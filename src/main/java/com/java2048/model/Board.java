@@ -30,7 +30,7 @@ public class Board {
     /**
      * Initializes the board with the two first tiles.
      */
-    public void initialize() {
+    void initialize() {
         this.tiles = new Tile[SIDE][SIDE];
         addRandomTile();
         addRandomTile();
@@ -40,8 +40,9 @@ public class Board {
      * This method moves all the tiles into the direction in parameter.
      *
      * @param direction the desired direction
+     * @return true if at least one tile moved, false otherwise.
      */
-    public void moveTiles(Direction direction) {
+    void moveTiles(Direction direction) {
         switch (direction) {
             case LEFT:
                 //Read from left to right, 2 2 4 8 --> 4 4 8 0 
@@ -87,7 +88,6 @@ public class Board {
                 }
             }
         }
-
     }
 
     /**
@@ -99,7 +99,7 @@ public class Board {
      * @param direction the direction in which the tile should slide to
      * @return true if the tile was able to move or merge, false otherwise.
      */
-    public boolean move(int row, int col, Direction direction) {
+    private boolean move(int row, int col, Direction direction) {
         int horizontalDelta = direction.getDeltaCol();
         int verticalDelta = direction.getDeltaRow();
         //This will be used to know if the tile was able to move or not
@@ -143,24 +143,22 @@ public class Board {
     }
 
     /**
-     * This method adds a random tile on the board. Can be a 2 or a 4, 4 has one
-     * out of ten chances to be picked.
+     * Recursive method that adds a random tile in the board only if there is no
+     * tile already there. The number can be 2 or 4 but 4 has only one chance
+     * out of ten to be chosen.
+     *
      */
-    public void addRandomTile() {
-        int nbFreeTiles = getNbFreeTiles();
-        if (nbFreeTiles != 0) {
-            int cpt = 1;
-            int random_tile = (int) (Math.random() * (nbFreeTiles - 1 + 1) + 1);
-            int value = (int) (Math.random() * (10 - 0 + 1) + 0) == 0 ? 4 : 2;
-            for (int i = 0; i < SIDE; i++) {
-                for (int j = 0; j < SIDE; j++) {
-                    if (cpt == random_tile) {
-                        this.tiles[i][j] = new Tile(value);
-                    }
-                    cpt++;
-                }
-            }
+    void addRandomTile() {
+        int value = (int) (Math.random() * (10 - 0 + 1) + 0) == 0 ? 4 : 2;
+        int random_row = (int) (Math.random() * ((SIDE - 1) - 0 + 1) + 0);
+        int random_col = (int) (Math.random() * ((SIDE - 1) - 0 + 1) + 0);
+
+        if (tiles[random_row][random_col] == null) {
+            tiles[random_row][random_col] = new Tile(value);
+        } else {
+            addRandomTile();
         }
+
     }
 
     /**
@@ -168,7 +166,7 @@ public class Board {
      *
      * @return the number of free tiles.
      */
-    public int getNbFreeTiles() {
+    int getNbFreeTiles() {
         int cpt = 0;
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
@@ -178,6 +176,22 @@ public class Board {
             }
         }
         return cpt;
+    }
+
+    /**
+     * Checks if the player has reach a 2048 tile.
+     *
+     * @return true if the player has reach a 2048 tile, false otherwise
+     */
+    boolean check2048() {
+        for (int row = 0; row < SIDE; row++) {
+            for (int col = 0; col < SIDE; col++) {
+                if (tiles[row][col] != null && tiles[row][col].getValue() == 2048) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**

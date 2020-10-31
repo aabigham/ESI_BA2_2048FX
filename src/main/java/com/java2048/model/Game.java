@@ -23,21 +23,52 @@ public class Game implements Model {
     }
 
     /**
-     * Getter of board.
+     * Moves the all the tiles in the desired direction.
      *
-     * @return the board of the game.
+     * @param direction the direction in which to move the tiles
      */
-    public Board getBoard() {
-        return board;
+    @Override
+    public void move(Direction direction) {
+        board.moveTiles(direction);
     }
 
     /**
-     * Getter of status.
-     *
-     * @return the status of the game.
+     * This method adds a random tile on the board. Can be a 2 or a 4, 4 has one
+     * out of ten chances to be picked.
      */
-    public GameStatus getStatus() {
-        return status;
+    @Override
+    public void addRandomTile() {
+        board.addRandomTile();
+    }
+
+    /**
+     * Updates the status of the game.
+     */
+    @Override
+    public void updateStatus() {
+        if (board.check2048()) {
+            this.status = GameStatus.WIN;
+        } else if (board.getNbFreeTiles() == 0) {
+            this.status = GameStatus.FAIL;
+        }
+    }
+
+    /**
+     * Checks if the game is still in progress.
+     *
+     * @return true is if the game is still in progress, false otherwise.
+     */
+    public boolean isInProgress() {
+        return status.equals(GameStatus.IN_PROGRESS);
+    }
+
+    /**
+     * Getter of the game board.
+     *
+     * @return the game board.
+     */
+    public Board getBoard() {
+        return board;
     }
 
 }

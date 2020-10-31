@@ -4,6 +4,7 @@ import java.util.Scanner;
 import com.java2048.model.Board;
 import com.java2048.model.Direction;
 import com.java2048.model.Game;
+import com.java2048.model.GameStatus;
 import com.java2048.view.InterfaceView;
 
 /**
@@ -28,22 +29,14 @@ public class Controller {
 
     public void startGame() {
         game.initGame();
-        Board board = game.getBoard();
 
-        consoleView.displayBoard(board);
-        System.out.println(" ");
-        board.moveTiles(Direction.DOWN);
-        consoleView.displayBoard(board);
-        System.out.println(" ");
-        board.moveTiles(Direction.UP);
-        consoleView.displayBoard(board);
-        System.out.println(" ");
-        board.moveTiles(Direction.LEFT);
-        consoleView.displayBoard(board);
-        System.out.println(" ");
-        board.moveTiles(Direction.RIGHT);
-        consoleView.displayBoard(board);
-        System.out.println(" ");
+        while (game.isInProgress()) {
+            consoleView.displayBoard(game.getBoard());
+            game.updateStatus();
+
+            game.move(askDirection());
+            game.addRandomTile();
+        }
     }
 
     /**
@@ -51,7 +44,7 @@ public class Controller {
      *
      * @return the direction.
      */
-    Direction askDirection() {
+    private Direction askDirection() {
         Scanner scanner = new Scanner(System.in);
         consoleView.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
         char c = scanner.nextLine().charAt(0);
