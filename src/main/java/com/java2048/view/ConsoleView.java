@@ -42,7 +42,7 @@ public class ConsoleView implements InterfaceView {
     }
 
     /**
-     * Display a message to the player's attention.
+     * Displays a message to the player.
      *
      * @param message the message to display to the player
      */

@@ -13,7 +13,7 @@ public class Game implements Model {
     GameStatus status;
 
     /**
-     * Starts the game.
+     * Initializes the game.
      */
     @Override
     public void initGame() {
@@ -23,7 +23,7 @@ public class Game implements Model {
     }
 
     /**
-     * Moves the all the tiles in the desired direction.
+     * Moves all the tiles in the desired direction.
      *
      * @param direction the direction in which to move the tiles
      * @return true if at least one tile moved, false otherwise.
@@ -34,8 +34,8 @@ public class Game implements Model {
     }
 
     /**
-     * This method adds a random tile on the board. Can be a 2 or a 4, 4 has one
-     * out of ten chances to be picked.
+     * This method adds a random tile on the board, can be a 2 or a 4. The 4 has
+     * one chance out of ten to be chosen.
      */
     @Override
     public void addRandomTile() {
@@ -43,7 +43,7 @@ public class Game implements Model {
     }
 
     /**
-     * Updates the status of the game.
+     * Updates the status of the game, WIN or FAIL.
      */
     @Override
     public void updateStatus() {

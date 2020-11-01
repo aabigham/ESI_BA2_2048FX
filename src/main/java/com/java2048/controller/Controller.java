@@ -1,10 +1,8 @@
 package com.java2048.controller;
 
 import java.util.Scanner;
-import com.java2048.model.Board;
 import com.java2048.model.Direction;
 import com.java2048.model.Game;
-import com.java2048.model.GameStatus;
 import static com.java2048.model.GameStatus.*;
 import com.java2048.view.InterfaceView;
 
@@ -28,6 +26,9 @@ public class Controller {
         this.consoleView = consoleView;
     }
 
+    /**
+     * Starts the game.
+     */
     public void startGame() {
         game.initGame();
 
@@ -48,19 +49,18 @@ public class Controller {
     }
 
     /**
-     * Asks a direction.
+     * Asks a direction to the player.
      *
      * @return the direction.
      */
     private Direction askDirection() {
         Scanner scanner = new Scanner(System.in);
         consoleView.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
-        char c = scanner.nextLine().charAt(0);
-        Character.toLowerCase(c);
+        char c = Character.toLowerCase(scanner.nextLine().charAt(0));
 
         while (c != 'z' && c != 'q' && c != 's' && c != 'd') {
             consoleView.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
-            c = scanner.nextLine().charAt(0);
+            c = Character.toLowerCase(scanner.nextLine().charAt(0));
         }
 
         switch (c) {

@@ -13,22 +13,13 @@ public class Board {
     private final int SIDE = 4;
 
     /**
-     * Constructor of board.
-     *
-     * @param tiles the tiles on the board
-     */
-    public Board(Tile[][] tiles) {
-        this.tiles = tiles;
-    }
-
-    /**
      * Default constructor of board.
      */
     public Board() {
     }
 
     /**
-     * Initializes the board with the two first tiles.
+     * Initializes the board with the two first random tiles.
      */
     void initialize() {
         this.tiles = new Tile[SIDE][SIDE];

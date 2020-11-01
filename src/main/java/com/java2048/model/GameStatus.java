@@ -1,7 +1,7 @@
 package com.java2048.model;
 
 /**
- * This enum is composed of every possible status of the game.
+ * Every status of the game. IN_PROGRESS, FAIL or WIN.
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
