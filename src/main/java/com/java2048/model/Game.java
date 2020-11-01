@@ -26,10 +26,11 @@ public class Game implements Model {
      * Moves the all the tiles in the desired direction.
      *
      * @param direction the direction in which to move the tiles
+     * @return true if at least one tile moved, false otherwise.
      */
     @Override
-    public void move(Direction direction) {
-        board.moveTiles(direction);
+    public boolean move(Direction direction) {
+        return board.moveTiles(direction);
     }
 
     /**

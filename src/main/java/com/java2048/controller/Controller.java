@@ -33,8 +33,9 @@ public class Controller {
 
         while (game.isInProgress()) {
             consoleView.displayBoard(game.getBoard());
-            game.move(askDirection());
-            game.addRandomTile();
+            if (game.move(askDirection())) {
+                game.addRandomTile();
+            }
             game.updateStatus();
         }
 

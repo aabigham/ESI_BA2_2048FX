@@ -42,13 +42,25 @@ public class Board {
      * @param direction the desired direction
      * @return true if at least one tile moved, false otherwise.
      */
-    void moveTiles(Direction direction) {
+    boolean moveTiles(Direction direction) {
+        /**
+         * This variable be used to know if at least one tile was able to move
+         * or not. Once this is set to true, it will never go back to false due
+         * to the if statements inside the for loops.
+         */
+        boolean couldMove = false;
+
+        //Applies the move method to each tile in the correct path, according to its direction
         switch (direction) {
             case LEFT:
                 //Read from left to right, 2 2 4 8 --> 4 4 8 0 
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = 0; col < SIDE; col++) {
-                        move(row, col, direction);
+                        if (!couldMove) {
+                            couldMove = move(row, col, direction);
+                        } else {
+                            move(row, col, direction);
+                        }
                     }
                 }
                 break;
@@ -56,7 +68,11 @@ public class Board {
                 //Read columns from right to left, 2 2 4 8 --> 0 4 4 8 
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = SIDE - 1; col >= 0; col--) {
-                        move(row, col, direction);
+                        if (!couldMove) {
+                            couldMove = move(row, col, direction);
+                        } else {
+                            move(row, col, direction);
+                        }
                     }
                 }
                 break;
@@ -64,7 +80,11 @@ public class Board {
                 //Read from top to bottom, same as left but reversed delta values
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = 0; col < SIDE; col++) {
-                        move(row, col, direction);
+                        if (!couldMove) {
+                            couldMove = move(row, col, direction);
+                        } else {
+                            move(row, col, direction);
+                        }
                     }
                 }
                 break;
@@ -72,15 +92,23 @@ public class Board {
                 //Read rows from bottom to top, same as right but reversed delta values
                 for (int row = SIDE - 1; row >= 0; row--) {
                     for (int col = 0; col < SIDE; col++) {
-                        move(row, col, direction);
+                        if (!couldMove) {
+                            couldMove = move(row, col, direction);
+                        } else {
+                            move(row, col, direction);
+                        }
                     }
                 }
                 break;
             default:
+                //Probably never going to get there
                 throw new IllegalArgumentException("Direction is not valid.");
         }
 
-        //Reset the blocked status for every tile at the end of each call otherwise next time nothing will be able to move
+        /**
+         * Reset the blocked status for every tile at the end of each call
+         * otherwise next time nothing will be able to move
+         */
         for (int row = 0; row < SIDE; row++) {
             for (int col = 0; col < SIDE; col++) {
                 if (tiles[row][col] != null) {
@@ -88,6 +116,8 @@ public class Board {
                 }
             }
         }
+
+        return couldMove;
     }
 
     /**
@@ -126,6 +156,7 @@ public class Board {
             if (tiles[newRow][newCol] == null) {
                 //If there is nothing in the new position, moves the current tile to the new position
                 tiles[newRow][newCol] = currentTile;
+                couldMove = true;
                 tiles[newRow - verticalDelta][newCol - horizontalDelta] = null;
             } else if (tiles[newRow][newCol].canMergeWith(currentTile) && !tiles[newRow][newCol].isBlocked()) {
                 //Checks if the tile in the new position can merge with the current one and if the new tile is blocked or not
@@ -134,7 +165,7 @@ public class Board {
                 couldMove = true;
                 tiles[newRow - verticalDelta][newCol - horizontalDelta] = null;
             } else {
-                //Probably never going to get there because out of bounds statement before
+                //Probably never going to get there
                 break;
             }
         }

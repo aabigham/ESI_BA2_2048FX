@@ -16,8 +16,9 @@ public interface Model {
      * Moves the all the tiles in the desired direction.
      *
      * @param direction the direction in which to move the tiles
+     * @return true if at least one tile moved, false otherwise.
      */
-    void move(Direction direction);
+    boolean move(Direction direction);
 
     /**
      * This method adds a random tile on the board. Can be a 2 or a 4, 4 has one
