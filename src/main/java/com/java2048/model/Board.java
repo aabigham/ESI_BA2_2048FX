@@ -259,10 +259,12 @@ public class Board {
             for (int col = 0; col < SIDE; col++) {
                 Tile thisTile = this.getTileAt(row, col);
                 Tile boardTile = board.getTileAt(row, col);
+                //One tile is null but the other is not
                 if (thisTile == null && boardTile != null
                         || thisTile != null && boardTile == null) {
                     return false;
                 }
+                //Both tiles are not null and have values
                 if (thisTile != null && boardTile != null
                         && thisTile.getValue() != boardTile.getValue()) {
                     return false;
