@@ -1,6 +1,7 @@
 package com.java2048.model;
 
 import static com.java2048.model.Direction.*;
+import java.util.Arrays;
 
 /**
  * The game board. It is filled with tiles.
@@ -11,6 +12,15 @@ public class Board {
 
     private Tile[][] tiles;
     private final int SIDE = 4;
+
+    /**
+     * Constructor of Board.
+     *
+     * @param tiles the tiles of the board
+     */
+    public Board(Tile[][] tiles) {
+        this.tiles = tiles;
+    }
 
     /**
      * Default constructor of board.
@@ -235,6 +245,31 @@ public class Board {
      */
     public int getSIDE() {
         return SIDE;
+    }
+
+    /**
+     * This method checks if a board has the same values of another board, at
+     * the same exact position for each tile.
+     *
+     * @param board the board we want to check
+     * @return true if the board is similar, false otherwise.
+     */
+    boolean isSimilarTo(Board board) {
+        for (int row = 0; row < SIDE; row++) {
+            for (int col = 0; col < SIDE; col++) {
+                Tile thisTile = this.getTileAt(row, col);
+                Tile boardTile = board.getTileAt(row, col);
+                if (thisTile == null && boardTile != null
+                        || thisTile != null && boardTile == null) {
+                    return false;
+                }
+                if (thisTile != null && boardTile != null
+                        && thisTile.getValue() != boardTile.getValue()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }
