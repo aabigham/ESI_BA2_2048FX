@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/netbeans,java,code-java,maven
-# Edit at https://www.toptal.com/developers/gitignore?templates=netbeans,java,code-java,maven
+# Created by https://www.toptal.com/developers/gitignore/api/java,maven,code-java,netbeans
+# Edit at https://www.toptal.com/developers/gitignore?templates=java,maven,code-java,netbeans
 
 ### Code-Java ###
 # Language Support for Java(TM) by Red Hat extension for Visual Studio Code - https://marketplace.visualstudio.com/items?itemName=redhat.java
@@ -57,4 +57,4 @@ dist/
 nbdist/
 .nb-gradle/
 
-# End of https://www.toptal.com/developers/gitignore/api/netbeans,java,code-java,maven
+# End of https://www.toptal.com/developers/gitignore/api/java,maven,code-java,netbeans
