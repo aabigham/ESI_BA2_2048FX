@@ -34,17 +34,17 @@ public class Board {
      * @return true if at least one tile moved, false otherwise.
      */
     boolean moveTiles(Direction direction) {
-        /**
-         * This variable be used to know if at least one tile was able to move
-         * or not. Once this is set to true, it will never go back to false due
-         * to the if statements inside the for loops.
+        /*
+         This variable be used to know if at least one tile was able to move
+         or not. Once this is set to true, it will never go back to false due
+         to the if statements inside the for loops.
          */
         boolean couldMove = false;
 
         //Applies the move method to each tile in the correct path, according to its direction
         switch (direction) {
             case LEFT:
-                //Read from left to right, 2 2 4 8 --> 4 4 8 0 
+                //Read from left to right (col decrement), 2 2 4 8 --> 4 4 8 0 
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = 0; col < SIDE; col++) {
                         if (!couldMove) {
@@ -56,7 +56,7 @@ public class Board {
                 }
                 break;
             case RIGHT:
-                //Read columns from right to left, 2 2 4 8 --> 0 4 4 8 
+                //Read columns from right to left (col increment), 2 2 4 8 --> 0 4 4 8 
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = SIDE - 1; col >= 0; col--) {
                         if (!couldMove) {
@@ -68,7 +68,7 @@ public class Board {
                 }
                 break;
             case UP:
-                //Read from top to bottom, same as left but reversed delta values
+                //Read from top to bottom (row decrement)
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = 0; col < SIDE; col++) {
                         if (!couldMove) {
@@ -80,7 +80,7 @@ public class Board {
                 }
                 break;
             case DOWN:
-                //Read rows from bottom to top, same as right but reversed delta values
+                //Read rows from bottom to top (row increment)
                 for (int row = SIDE - 1; row >= 0; row--) {
                     for (int col = 0; col < SIDE; col++) {
                         if (!couldMove) {
@@ -121,40 +121,40 @@ public class Board {
      * @return true if the tile was able to move or merge, false otherwise.
      */
     private boolean move(int row, int col, Direction direction) {
-        int horizontalDelta = direction.getDeltaCol();
-        int verticalDelta = direction.getDeltaRow();
-        //This will be used to know if the tile was able to move or not
-        boolean couldMove = false;
-
         //Get the current tile, if it's null returns false
         Tile currentTile = tiles[row][col];
         if (currentTile == null) {
             return false;
         }
+        //This will be used to know if the tile was able to move or not
+        boolean couldMove = false;
 
-        int newRow = row;
-        int newCol = col;
+        //Variables to calculate the next position
+        int horizontalDelta = direction.getDeltaCol();
+        int verticalDelta = direction.getDeltaRow();
+        int nextRow = row;
+        int nextCol = col;
 
         //While the tile is able to move to an empty place or able to merge, or if it's simply not hitting a wall 
         while (true) {
-            newRow += verticalDelta;
-            newCol += horizontalDelta;
+            nextRow += verticalDelta;
+            nextCol += horizontalDelta;
             //New position out of bounds ? if yes, break
-            if (newRow < 0 || newRow > SIDE - 1 || newCol < 0 || newCol > SIDE - 1) {
+            if (nextRow < 0 || nextRow > SIDE - 1 || nextCol < 0 || nextCol > SIDE - 1) {
                 break;
             }
 
-            if (tiles[newRow][newCol] == null) {
+            if (tiles[nextRow][nextCol] == null) {
                 //If there is nothing in the new position, moves the current tile to the new position
-                tiles[newRow][newCol] = currentTile;
+                tiles[nextRow][nextCol] = currentTile;
                 couldMove = true;
-                tiles[newRow - verticalDelta][newCol - horizontalDelta] = null;
-            } else if (tiles[newRow][newCol].canMergeWith(currentTile) && !tiles[newRow][newCol].isBlocked()) {
+                tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;
+            } else if (tiles[nextRow][nextCol].canMergeWith(currentTile) && !tiles[nextRow][nextCol].isBlocked()) {
                 //Checks if the tile in the new position can merge with the current one and if the new tile is blocked or not
-                tiles[newRow][newCol].setBlocked(true);
-                tiles[newRow][newCol].setValue(tiles[newRow][newCol].getValue() * 2);
+                tiles[nextRow][nextCol].setBlocked(true);
+                tiles[nextRow][nextCol].setValue(tiles[nextRow][nextCol].getValue() * 2);
                 couldMove = true;
-                tiles[newRow - verticalDelta][newCol - horizontalDelta] = null;
+                tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;
             } else {
                 //Probably never going to get there
                 break;
