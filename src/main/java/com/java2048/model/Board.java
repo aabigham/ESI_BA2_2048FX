@@ -43,10 +43,10 @@ public class Board {
      * @return true if at least one tile moved, false otherwise.
      */
     boolean moveTiles(Direction direction) {
-        /*
-         This variable be used to know if at least one tile was able to move
-         or not. Once this is set to true, it will never go back to false due
-         to the if statements inside the for loops.
+        /**
+         * This variable be used to know if at least one tile was able to move
+         * or not. Once this is set to true, it will never go back to false due
+         * to the if statements inside the for loops.
          */
         boolean couldMove = false;
 
@@ -100,9 +100,6 @@ public class Board {
                     }
                 }
                 break;
-            default:
-                //Probably never going to get there
-                throw new IllegalArgumentException("Direction is not valid.");
         }
 
         /**
@@ -177,7 +174,6 @@ public class Board {
      * Recursive method that adds a random tile in the board only if there is no
      * tile already there. The number can be 2 or 4 but 4 has only one chance
      * out of ten to be chosen.
-     *
      */
     void addRandomTile() {
         if (getNbFreeTiles() != 0) {

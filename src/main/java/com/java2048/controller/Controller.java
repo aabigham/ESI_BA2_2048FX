@@ -7,6 +7,8 @@ import static com.java2048.model.GameStatus.*;
 import com.java2048.view.InterfaceView;
 
 /**
+ * The controller responds to the user input and performs interactions on the
+ * data model objects.
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
@@ -40,6 +42,7 @@ public class Controller {
             game.updateStatus();
         }
 
+        //After the loop breaks, shows the board and the end message.
         consoleView.displayBoard(game.getBoard());
         if (game.getStatus().equals(WIN)) {
             consoleView.displayMessage("You won !");
@@ -58,6 +61,7 @@ public class Controller {
         consoleView.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
         char c = Character.toLowerCase(scanner.nextLine().charAt(0));
 
+        //Safe console input
         while (c != 'z' && c != 'q' && c != 's' && c != 'd') {
             consoleView.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
             c = Character.toLowerCase(scanner.nextLine().charAt(0));
@@ -73,7 +77,7 @@ public class Controller {
             case 'd':
                 return Direction.RIGHT;
             default:
-                throw new AssertionError();
+                throw new IllegalArgumentException();
         }
     }
 }
