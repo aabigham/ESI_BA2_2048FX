@@ -17,10 +17,10 @@ public class ConsoleView implements InterfaceView {
      */
     @Override
     public void displayBoard(Board board) {
-        for (int i = 0; i < board.getSIDE(); i++) {
+        for (int i = 0; i < 4; i++) {
             System.out.println("+------+------+------+------+");
             System.out.print("| ");
-            for (int j = 0; j < board.getSIDE(); j++) {
+            for (int j = 0; j < 4; j++) {
                 Tile tile = board.getTileAt(i, j);
                 if (tile == null) {
                     System.out.print("    ");

@@ -234,15 +234,6 @@ public class Board {
     }
 
     /**
-     * Getter of the max side value.
-     *
-     * @return the side value.
-     */
-    public int getSIDE() {
-        return SIDE;
-    }
-
-    /**
      * This method checks if a board has the same values of another board, at
      * the same exact position for each tile.
      *
