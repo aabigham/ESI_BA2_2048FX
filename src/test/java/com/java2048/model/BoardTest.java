@@ -554,4 +554,27 @@ public class BoardTest {
         assertEquals(expResult, similar);
     }
 
+    /**
+     * Test of isSimilarTo method, of class Board.
+     */
+    @Test
+    public void testIsSimilarTo_NotSimilar2() {
+        Board board1 = new Board(new Tile[][]{
+            {null, null, null, new Tile(2)},
+            {null, null, null, new Tile(2)},
+            {null, null, null, new Tile(2)},
+            {null, null, null, new Tile(2)}}
+        );
+        Board board2 = new Board(new Tile[][]{
+            {null, null, null, new Tile(2)},
+            {null, null, null, new Tile(2)},
+            {null, null, null, new Tile(4)},
+            {null, null, null, new Tile(2)}}
+        );
+        System.out.println("Test isSimilarTo - Not Similar 2");
+        boolean expResult = false;
+        boolean similar = board1.isSimilarTo(board2);
+        assertEquals(expResult, similar);
+    }
+
 }
