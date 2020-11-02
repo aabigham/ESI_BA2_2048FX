@@ -11,42 +11,38 @@ import org.junit.jupiter.api.BeforeEach;
  */
 public class GameTest {
 
-    public GameTest() {
-    }
+    private Game game;
 
-    /**
-     * Test of initGame method, of class Game.
-     */
-    @Test
-    public void testInitGame() {
+    public GameTest() {
     }
 
     /**
      * Test of updateStatus method, of class Game.
      */
     @Test
-    public void testUpdateStatus() {
+    public void testUpdateStatus_Win() {
+        game = new Game(new Board(new Tile[][]{
+            {new Tile(2048), null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        }));
+        game.updateStatus();
+        assertTrue(game.getStatus().equals(GameStatus.WIN));
     }
 
     /**
-     * Test of isInProgress method, of class Game.
+     * Test of updateStatus method, of class Game.
      */
     @Test
-    public void testIsInProgress() {
+    public void testUpdateStatus_Fail() {
+        game = new Game(new Board(new Tile[][]{
+            {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
+            {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
+            {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
+            {new Tile(2), new Tile(2), new Tile(2), new Tile(2)}
+        }));
+        game.updateStatus();
+        assertTrue(game.getStatus().equals(GameStatus.FAIL));
     }
-
-    /**
-     * Test of getBoard method, of class Game.
-     */
-    @Test
-    public void testGetBoard() {
-    }
-
-    /**
-     * Test of getStatus method, of class Game.
-     */
-    @Test
-    public void testGetStatus() {
-    }
-
 }

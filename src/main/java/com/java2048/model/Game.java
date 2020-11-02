@@ -13,6 +13,22 @@ public class Game implements Model {
     GameStatus status;
 
     /**
+     * Constructor of Game.
+     *
+     * @param board the board of the game
+     */
+    public Game(Board board) {
+        this.board = board;
+        this.status = GameStatus.IN_PROGRESS;
+    }
+
+    /**
+     * Default constructor of Game.
+     */
+    public Game() {
+    }
+
+    /**
      * Initializes the game.
      */
     @Override
