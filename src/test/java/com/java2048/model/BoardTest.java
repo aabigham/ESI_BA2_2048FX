@@ -32,9 +32,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move UP - No Merge");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -56,9 +54,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move UP - Merge Two");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -80,9 +76,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move UP - Merge Three");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -104,9 +98,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move UP - Merge Four");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -128,9 +120,7 @@ public class BoardTest {
             {new Tile(2), new Tile(2), null, null}
         });
         System.out.println("Test move DOWN - No Merge");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -152,9 +142,7 @@ public class BoardTest {
             {new Tile(4), null, null, null}
         });
         System.out.println("Test move DOWN - Merge Two");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -176,9 +164,7 @@ public class BoardTest {
             {new Tile(4), null, null, null}
         });
         System.out.println("Test move DOWN - Merge Three");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -200,9 +186,7 @@ public class BoardTest {
             {new Tile(4), null, null, null}
         });
         System.out.println("Test move DOWN - Merge Four");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -224,9 +208,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move LEFT - No Merge");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -248,9 +230,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move LEFT - Merge Two");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -272,9 +252,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move LEFT - Merge Three");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -296,9 +274,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move LEFT - Merge Four");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -320,9 +296,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move RIGHT - No Merge");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -344,9 +318,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move RIGHT - Merge Two");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -368,9 +340,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move RIGHT - Merge Three");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -392,9 +362,7 @@ public class BoardTest {
             {null, null, null, null}
         });
         System.out.println("Test move RIGHT - Merge Four");
-        boolean expResult = true;
-        boolean similar = board.isSimilarTo(expBoard);
-        assertEquals(expResult, similar);
+        assertTrue(board.isSimilarTo(expBoard));
     }
 
     /**
@@ -444,9 +412,7 @@ public class BoardTest {
             {null, null, null, null}}
         );
         System.out.println("Test check2048 - Pass");
-        boolean expResult = true;
-        boolean check2048 = board.check2048();
-        assertEquals(expResult, check2048);
+        assertTrue(board.check2048());
     }
 
     /**
@@ -484,9 +450,7 @@ public class BoardTest {
             {null, null, null, null}}
         );
         System.out.println("Test isSimilarTo - Similar ROW");
-        boolean expResult = true;
-        boolean similar = board1.isSimilarTo(board2);
-        assertEquals(expResult, similar);
+        assertTrue(board1.isSimilarTo(board2));
     }
 
     /**
@@ -507,9 +471,7 @@ public class BoardTest {
             {new Tile(2), null, null, null}}
         );
         System.out.println("Test isSimilarTo - Similar COLUMN");
-        boolean expResult = true;
-        boolean similar = board1.isSimilarTo(board2);
-        assertEquals(expResult, similar);
+        assertTrue(board1.isSimilarTo(board2));
     }
 
     public void testIsSimilarTo_SimilarNull() {
@@ -526,9 +488,7 @@ public class BoardTest {
             {null, null, null, null}}
         );
         System.out.println("Test isSimilarTo - Similar NULL");
-        boolean expResult = true;
-        boolean similar = board1.isSimilarTo(board2);
-        assertEquals(expResult, similar);
+        assertTrue(board1.isSimilarTo(board2));
     }
 
     /**
@@ -549,9 +509,7 @@ public class BoardTest {
             {null, null, null, null}}
         );
         System.out.println("Test isSimilarTo - Not Similar");
-        boolean expResult = false;
-        boolean similar = board1.isSimilarTo(board2);
-        assertEquals(expResult, similar);
+        assertFalse(board1.isSimilarTo(board2));
     }
 
     /**
@@ -572,9 +530,7 @@ public class BoardTest {
             {null, null, null, new Tile(2)}}
         );
         System.out.println("Test isSimilarTo - Not Similar 2");
-        boolean expResult = false;
-        boolean similar = board1.isSimilarTo(board2);
-        assertEquals(expResult, similar);
+        assertFalse(board1.isSimilarTo(board2));
     }
 
 }

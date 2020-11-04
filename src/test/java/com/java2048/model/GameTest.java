@@ -2,7 +2,6 @@ package com.java2048.model;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
 
 /**
  * Test class of the class game.
