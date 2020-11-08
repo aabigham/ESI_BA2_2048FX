@@ -176,16 +176,17 @@ public class Board {
      * out of ten to be chosen.
      */
     void addRandomTile() {
-        if (getNbFreeTiles() != 0) {
-            int value = (int) (Math.random() * (10 - 0 + 1) + 0) == 0 ? 4 : 2;
-            int random_row = (int) (Math.random() * ((SIDE - 1) - 0 + 1) + 0);
-            int random_col = (int) (Math.random() * ((SIDE - 1) - 0 + 1) + 0);
+        if (getNbFreeTiles() == 0) {
+            throw new RuntimeException("The board is already full of tiles !");
+        }
+        int value = (int) (Math.random() * (10 - 0 + 1) + 0) == 0 ? 4 : 2;
+        int random_row = (int) (Math.random() * ((SIDE - 1) - 0 + 1) + 0);
+        int random_col = (int) (Math.random() * ((SIDE - 1) - 0 + 1) + 0);
 
-            if (tiles[random_row][random_col] == null) {
-                tiles[random_row][random_col] = new Tile(value);
-            } else {
-                addRandomTile();
-            }
+        if (tiles[random_row][random_col] == null) {
+            tiles[random_row][random_col] = new Tile(value);
+        } else {
+            addRandomTile();
         }
     }
 

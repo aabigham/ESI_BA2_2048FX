@@ -1,5 +1,6 @@
 package com.java2048.model;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -381,6 +382,23 @@ public class BoardTest {
         int expResult = 15;
         int nbFreeTiles = board.getNbFreeTiles();
         assertEquals(expResult, nbFreeTiles);
+    }
+
+    /**
+     * Test of addRandomTile method, of class Board.
+     */
+    @Test
+    public void testAddRandomTile_ExpectedException() {
+        Board board = new Board(new Tile[][]{
+            {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
+            {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
+            {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
+            {new Tile(2), new Tile(2), new Tile(2), new Tile(2)}
+        });
+        System.out.println("Test addRandomTile - ExpectedException");
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            board.addRandomTile();
+        });
     }
 
     /**
