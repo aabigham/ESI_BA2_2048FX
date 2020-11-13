@@ -30,4 +30,9 @@ public interface Model {
      * Updates the status of the game, WIN or FAIL.
      */
     public void updateStatus();
+
+    /**
+     * Updates the score of the game.
+     */
+    public void updateScore();
 }

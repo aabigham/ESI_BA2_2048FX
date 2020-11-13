@@ -50,4 +50,14 @@ public class ConsoleView implements InterfaceView {
     public void displayMessage(String message) {
         System.out.println(message);
     }
+
+    /**
+     * Displays the score of the player.
+     *
+     * @param score the score of the player.
+     */
+    @Override
+    public void displayScore(int score) {
+        System.out.println("Your score is : " + score);
+    }
 }

@@ -11,6 +11,7 @@ public class Board {
 
     private Tile[][] tiles;
     private final int SIDE = 4;
+    private int scoreAdditioner;
 
     /**
      * Constructor of Board.
@@ -159,6 +160,7 @@ public class Board {
                 //Checks if the tile in the new position can merge with the current one and if the new tile is blocked or not
                 tiles[nextRow][nextCol].setBlocked(true);
                 tiles[nextRow][nextCol].setValue(tiles[nextRow][nextCol].getValue() * 2);
+                this.scoreAdditioner += tiles[nextRow][nextCol].getValue();
                 couldMove = true;
                 tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;
             } else {
@@ -259,6 +261,15 @@ public class Board {
             }
         }
         return true;
+    }
+
+    /**
+     * Gets the score additioner.
+     *
+     * @return the score additioner;
+     */
+    public int getScoreAdditioner() {
+        return scoreAdditioner;
     }
 
 }

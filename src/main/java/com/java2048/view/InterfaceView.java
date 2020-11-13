@@ -22,4 +22,11 @@ public interface InterfaceView {
      * @param message the message to display to the player
      */
     void displayMessage(String message);
+
+    /**
+     * Displays the score of the player.
+     *
+     * @param score the score of the player.
+     */
+    public void displayScore(int score);
 }

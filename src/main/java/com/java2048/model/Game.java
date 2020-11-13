@@ -11,6 +11,7 @@ public class Game implements Model {
 
     Board board;
     GameStatus status;
+    int score;
 
     /**
      * Constructor of Game.
@@ -71,6 +72,14 @@ public class Game implements Model {
     }
 
     /**
+     * Updates the score of the game.
+     */
+    @Override
+    public void updateScore() {
+        this.score += board.getScoreAdditioner() - this.score;
+    }
+
+    /**
      * Checks if the game is still in progress.
      *
      * @return true is if the game is still in progress, false otherwise.
@@ -95,6 +104,15 @@ public class Game implements Model {
      */
     public GameStatus getStatus() {
         return status;
+    }
+
+    /**
+     * Getter of the score.
+     *
+     * @return the score of the current game.
+     */
+    public int getScore() {
+        return score;
     }
 
 }

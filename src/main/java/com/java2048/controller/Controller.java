@@ -34,15 +34,21 @@ public class Controller {
     public void startGame() {
         game.initGame();
 
+        //While in progress
         while (game.isInProgress()) {
-            consoleView.displayBoard(game.getBoard());
+            consoleView.displayScore(game.getScore()); //Score
+            consoleView.displayBoard(game.getBoard()); //Board
+
+            //If the tile(s) moved, update score & add a new tile
             if (game.move(askDirection())) {
+                game.updateScore();
                 game.addRandomTile();
             }
-            game.updateStatus();
+            game.updateStatus(); //Update the status
         }
 
-        //After the loop breaks, shows the board and the end message.
+        //After the loop breaks, shows score, board and the end message.
+        consoleView.displayScore(game.getScore());
         consoleView.displayBoard(game.getBoard());
         if (game.getStatus().equals(WIN)) {
             consoleView.displayMessage("You won !");
