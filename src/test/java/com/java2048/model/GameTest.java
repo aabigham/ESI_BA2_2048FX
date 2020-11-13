@@ -26,6 +26,7 @@ public class GameTest {
             {null, null, null, null},
             {null, null, null, null}
         }));
+        System.out.println("Test update status - win");
         game.updateStatus();
         assertTrue(game.getStatus().equals(GameStatus.WIN));
     }
@@ -41,7 +42,26 @@ public class GameTest {
             {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
             {new Tile(2), new Tile(2), new Tile(2), new Tile(2)}
         }));
+        System.out.println("Test update status - fail");
         game.updateStatus();
         assertTrue(game.getStatus().equals(GameStatus.FAIL));
     }
+
+    /**
+     * Test of updateScore method, of class Game.
+     */
+    @Test
+    public void testUpdateScore() {
+        game = new Game(new Board(new Tile[][]{
+            {new Tile(2), null, null, null},
+            {new Tile(2), null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        }));
+        System.out.println("Test update score");
+        game.move(Direction.DOWN);
+        game.updateScore();
+        assertTrue(game.getScore() == 4);
+    }
+
 }
