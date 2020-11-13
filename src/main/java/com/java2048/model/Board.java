@@ -228,8 +228,8 @@ public class Board {
     /**
      * Gets the tile at the position in parameter.
      *
-     * @param row the row of the board.
-     * @param col te column of the board.
+     * @param row the row of the board
+     * @param col the column of the board
      * @return the tile in the specified position.
      */
     public Tile getTileAt(int row, int col) {

@@ -38,7 +38,6 @@ public class ConsoleView implements InterfaceView {
             System.out.println(" ");
         }
         System.out.println("+------+------+------+------+");
-
     }
 
     /**
