@@ -240,6 +240,8 @@ public class Board {
      * This method checks if a board has the same values of another board, at
      * the same exact position for each tile.
      *
+     * This method is used in tests.
+     *
      * @param board the board we want to check
      * @return true if the board is similar, false otherwise.
      */

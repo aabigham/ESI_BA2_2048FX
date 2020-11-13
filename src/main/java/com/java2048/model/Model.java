@@ -8,11 +8,6 @@ package com.java2048.model;
 public interface Model {
 
     /**
-     * Initializes the game.
-     */
-    void initGame();
-
-    /**
      * Moves all the tiles in the desired direction.
      *
      * @param direction the direction in which to move the tiles

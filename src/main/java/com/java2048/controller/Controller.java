@@ -32,19 +32,17 @@ public class Controller {
      * Starts the game.
      */
     public void startGame() {
-        game.initGame();
-
         //While in progress
-        while (game.isInProgress()) {
-            consoleView.displayScore(game.getScore()); //Score
-            consoleView.displayBoard(game.getBoard()); //Board
+        while (game.getStatus().equals(IN_PROGRESS)) {
+            consoleView.displayScore(game.getScore()); //Display score
+            consoleView.displayBoard(game.getBoard()); //Display board
 
-            //If the tile(s) moved, update score & add a new tile
+            //If a tile moved, updates score, adds a new tile & updates the status
             if (game.move(askDirection())) {
                 game.updateScore();
                 game.addRandomTile();
+                game.updateStatus();
             }
-            game.updateStatus(); //Update the status
         }
 
         //After the loop breaks, shows score, board and the end message.
@@ -64,16 +62,13 @@ public class Controller {
      */
     private Direction askDirection() {
         Scanner scanner = new Scanner(System.in);
-        consoleView.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
-        char c = Character.toLowerCase(scanner.nextLine().charAt(0));
-
-        //Safe console input
-        while (c != 'z' && c != 'q' && c != 's' && c != 'd') {
+        char dir;
+        do {
             consoleView.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
-            c = Character.toLowerCase(scanner.nextLine().charAt(0));
-        }
+            dir = Character.toLowerCase(scanner.nextLine().charAt(0));
+        } while (dir != 'z' && dir != 'q' && dir != 's' && dir != 'd');
 
-        switch (c) {
+        switch (dir) {
             case 'z':
                 return Direction.UP;
             case 'q':

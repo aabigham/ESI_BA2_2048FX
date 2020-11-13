@@ -27,13 +27,6 @@ public class Game implements Model {
      * Default constructor of Game.
      */
     public Game() {
-    }
-
-    /**
-     * Initializes the game.
-     */
-    @Override
-    public void initGame() {
         this.board = new Board();
         this.board.initialize();
         this.status = GameStatus.IN_PROGRESS;
@@ -51,8 +44,8 @@ public class Game implements Model {
     }
 
     /**
-     * This method adds a random tile on the board, can be a 2 or a 4. The 4 has
-     * one chance out of ten to be chosen.
+     * Adds a random tile on the board, can be a 2 or a 4. The 4 has one chance
+     * out of ten to be chosen.
      */
     @Override
     public void addRandomTile() {
@@ -77,15 +70,6 @@ public class Game implements Model {
     @Override
     public void updateScore() {
         this.score += board.getScoreAdditioner() - this.score;
-    }
-
-    /**
-     * Checks if the game is still in progress.
-     *
-     * @return true is if the game is still in progress, false otherwise.
-     */
-    public boolean isInProgress() {
-        return status.equals(GameStatus.IN_PROGRESS);
     }
 
     /**
