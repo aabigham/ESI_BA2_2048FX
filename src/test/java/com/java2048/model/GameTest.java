@@ -64,4 +64,21 @@ public class GameTest {
         assertTrue(game.getScore() == 4);
     }
 
+    /**
+     * Test of updateScore method, of class Game.
+     */
+    @Test
+    public void testUpdateScore_NoUpdate() {
+        game = new Game(new Board(new Tile[][]{
+            {new Tile(2), null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        }));
+        System.out.println("Test update score - no update");
+        game.move(Direction.DOWN);
+        game.updateScore();
+        assertTrue(game.getScore() == 0);
+    }
+
 }
