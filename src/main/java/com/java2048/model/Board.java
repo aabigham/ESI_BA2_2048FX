@@ -152,12 +152,16 @@ public class Board {
             }
 
             if (tiles[nextRow][nextCol] == null) {
-                //If there is nothing in the new position, moves the current tile to the new position
+                //If there is nothing in the new position, moves the current tile there
                 tiles[nextRow][nextCol] = currentTile;
                 couldMove = true;
                 tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;
             } else if (tiles[nextRow][nextCol].canMergeWith(currentTile) && !tiles[nextRow][nextCol].isBlocked()) {
-                //Checks if the tile in the new position can merge with the current one and if the new tile is blocked or not
+                /**
+                 * There is a tile in the future position and the if statement
+                 * checks if this tilecan merge with the current one, and also
+                 * if it is blocked or not
+                 */
                 tiles[nextRow][nextCol].setBlocked(true);
                 tiles[nextRow][nextCol].setValue(tiles[nextRow][nextCol].getValue() * 2);
                 this.scoreAdditioner += tiles[nextRow][nextCol].getValue();
