@@ -15,17 +15,17 @@ import com.java2048.view.InterfaceView;
 public class Controller {
 
     Game game;
-    InterfaceView consoleView;
+    InterfaceView view;
 
     /**
      * Constructor of controller.
      *
      * @param game the game
-     * @param consoleView the console view
+     * @param view the view
      */
-    public Controller(Game game, InterfaceView consoleView) {
+    public Controller(Game game, InterfaceView view) {
         this.game = game;
-        this.consoleView = consoleView;
+        this.view = view;
     }
 
     /**
@@ -34,8 +34,8 @@ public class Controller {
     public void startGame() {
         //While in progress
         while (game.getStatus().equals(IN_PROGRESS)) {
-            consoleView.displayScore(game.getScore()); //Display score
-            consoleView.displayBoard(game.getBoard()); //Display board
+            view.displayScore(game.getScore()); //Display score
+            view.displayBoard(game.getBoard()); //Display board
 
             //If a tile moved, updates score, adds a new tile & updates the status
             if (game.move(askDirection())) {
@@ -46,12 +46,12 @@ public class Controller {
         }
 
         //After the loop breaks, shows score, board and the end message.
-        consoleView.displayScore(game.getScore());
-        consoleView.displayBoard(game.getBoard());
+        view.displayScore(game.getScore());
+        view.displayBoard(game.getBoard());
         if (game.getStatus().equals(WIN)) {
-            consoleView.displayMessage("You won !");
+            view.displayMessage("You won !");
         } else if (game.getStatus().equals(FAIL)) {
-            consoleView.displayMessage("You lose !");
+            view.displayMessage("You lose !");
         }
     }
 
@@ -64,7 +64,7 @@ public class Controller {
         Scanner scanner = new Scanner(System.in);
         char dir;
         do {
-            consoleView.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
+            view.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
             dir = Character.toLowerCase(scanner.nextLine().charAt(0));
         } while (dir != 'z' && dir != 'q' && dir != 's' && dir != 'd');
 
