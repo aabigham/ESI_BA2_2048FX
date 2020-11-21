@@ -8,14 +8,13 @@ import com.java2048.model.Tile;
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
-public class ConsoleView implements InterfaceView {
+public class ConsoleView {
 
     /**
      * Displays the game board via console.
      *
      * @param board the board to display to the player
      */
-    @Override
     public void displayBoard(Board board) {
         for (int i = 0; i < 4; i++) {
             System.out.println("+------+------+------+------+");
@@ -45,7 +44,6 @@ public class ConsoleView implements InterfaceView {
      *
      * @param message the message to display to the player
      */
-    @Override
     public void displayMessage(String message) {
         System.out.println(message);
     }
@@ -55,7 +53,6 @@ public class ConsoleView implements InterfaceView {
      *
      * @param score the score of the player.
      */
-    @Override
     public void displayScore(int score) {
         System.out.println("Your score is : " + score);
     }

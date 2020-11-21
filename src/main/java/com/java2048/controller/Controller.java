@@ -4,7 +4,7 @@ import java.util.Scanner;
 import com.java2048.model.Direction;
 import com.java2048.model.Game;
 import static com.java2048.model.GameStatus.*;
-import com.java2048.view.InterfaceView;
+import com.java2048.view.ConsoleView;
 
 /**
  * The controller responds to the user input and performs interactions on the
@@ -15,7 +15,7 @@ import com.java2048.view.InterfaceView;
 public class Controller {
 
     Game game;
-    InterfaceView view;
+    ConsoleView view;
 
     /**
      * Constructor of controller.
@@ -23,7 +23,7 @@ public class Controller {
      * @param game the game
      * @param view the view
      */
-    public Controller(Game game, InterfaceView view) {
+    public Controller(Game game, ConsoleView view) {
         this.game = game;
         this.view = view;
     }
