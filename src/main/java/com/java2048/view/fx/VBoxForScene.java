@@ -12,6 +12,7 @@ public class VBoxForScene extends VBox {
     public VBoxForScene() {
         HBox hBoxMain = new HBox();
 
+        this.getChildren().addAll(hBoxMain);
     }
 
 }

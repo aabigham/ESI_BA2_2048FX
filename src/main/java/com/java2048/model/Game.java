@@ -1,5 +1,10 @@
 package com.java2048.model;
 
+import com.java2048.view.fx.Observable;
+import com.java2048.view.fx.Observer;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The Game class gathers the necessary elements for the game to present a
  * facade to the view. The view only interacts with this class to access the
@@ -7,11 +12,12 @@ package com.java2048.model;
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
-public class Game implements Model {
+public class Game implements Model, Observable {
 
     Board board;
     GameStatus status;
     int score;
+    private final List<Observer> observers;
 
     /**
      * Constructor of Game.
@@ -19,6 +25,7 @@ public class Game implements Model {
      * @param board the board of the game
      */
     public Game(Board board) {
+        observers = new ArrayList<>();
         this.board = board;
         this.status = GameStatus.IN_PROGRESS;
     }
@@ -27,6 +34,7 @@ public class Game implements Model {
      * Default constructor of Game.
      */
     public Game() {
+        observers = new ArrayList<>();
         this.board = new Board();
         this.board.initialize();
         this.status = GameStatus.IN_PROGRESS;
@@ -99,4 +107,38 @@ public class Game implements Model {
         return score;
     }
 
+    /**
+     * Adds an observer to the set of observers for this object, provided that
+     * it is not the same as some observer already in the set.
+     *
+     * @param obs an observer to be added.
+     */
+    @Override
+    public void registerObserver(Observer obs) {
+        if (!observers.contains(obs)) {
+            observers.add(obs);
+        }
+    }
+
+    /**
+     * Removes an observer from the set of observers of this object.
+     *
+     * @param obs an observer to be deleted.
+     */
+    @Override
+    public void removeObserver(Observer obs) {
+        if (observers.contains(obs)) {
+            observers.remove(obs);
+        }
+    }
+
+    /**
+     * If this object has changed, then notify all of its observers.
+     */
+    @Override
+    public void notifyObservers() {
+        for (Observer obs : observers) {
+            obs.update();
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.java2048.main;
 
+import com.java2048.view.fx.VBoxForScene;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Scene;
@@ -26,11 +27,11 @@ public class MainFx extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        /*Scene scene = new Scene(;
+        Scene scene = new Scene(new VBoxForScene());
 
         primaryStage.setResizable(false);
-        primaryStage.setTitle("Calculateur BMR");
+        primaryStage.setTitle("2048 FX");
         primaryStage.setScene(scene);
-        primaryStage.show();*/
+        primaryStage.show();
     }
 }
