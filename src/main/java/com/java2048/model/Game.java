@@ -40,8 +40,26 @@ public class Game implements Model, Observable {
         this.status = GameStatus.IN_PROGRESS;
     }
 
-    public void initialize() {
+    /**
+     * Resets the game.
+     */
+    public void reset() {
+        this.board = new Board();
+        this.board.initialize();
+        this.status = GameStatus.IN_PROGRESS;
         notifyObservers();
+    }
+
+    //TODO
+    public boolean play(Direction direction) {
+        boolean couldMove = board.moveTiles(direction);
+        if (couldMove) {
+            updateScore();
+            addRandomTile();
+            updateStatus();
+        }
+        notifyObservers();
+        return couldMove;
     }
 
     /**
