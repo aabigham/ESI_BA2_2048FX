@@ -65,7 +65,7 @@ public class Controller {
         char dir;
         do {
             view.displayMessage("Enter your direction : Z (UP) | Q (LEFT) | S (DOWN) | D (RIGHT)");
-            dir = Character.toLowerCase(scanner.nextLine().charAt(0));
+            dir = Character.toLowerCase(scanner.next().charAt(0));
         } while (dir != 'z' && dir != 'q' && dir != 's' && dir != 'd');
 
         switch (dir) {
