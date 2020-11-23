@@ -40,6 +40,10 @@ public class Game implements Model, Observable {
         this.status = GameStatus.IN_PROGRESS;
     }
 
+    public void initialize() {
+        notifyObservers();
+    }
+
     /**
      * Moves all the tiles in the desired direction.
      *

@@ -1,5 +1,6 @@
 package com.java2048.main;
 
+import com.java2048.model.Game;
 import com.java2048.view.fx.VBoxForScene;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -27,8 +28,10 @@ public class MainFx extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = new Scene(new VBoxForScene());
+        Scene scene = new Scene(new VBoxForScene(new Game()));
 
+        primaryStage.setHeight(700);
+        primaryStage.setWidth(1000);
         primaryStage.setResizable(false);
         primaryStage.setTitle("2048 FX");
         primaryStage.setScene(scene);
