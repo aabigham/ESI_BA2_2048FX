@@ -35,14 +35,30 @@ public class GameTest {
      * Test of updateStatus method, of class Game.
      */
     @Test
-    public void testUpdateStatus_Fail() {
+    public void testUpdateStatus_FullNotFail() {
         game = new Game(new Board(new Tile[][]{
             {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
             {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
             {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
             {new Tile(2), new Tile(2), new Tile(2), new Tile(2)}
         }));
-        System.out.println("Test update status - fail");
+        System.out.println("Test update status - full not fail");
+        game.updateStatus();
+        assertFalse(game.getStatus().equals(GameStatus.FAIL));
+    }
+
+    /**
+     * Test of updateStatus method, of class Game.
+     */
+    @Test
+    public void testUpdateStatus_FullFail() {
+        game = new Game(new Board(new Tile[][]{
+            {new Tile(16), new Tile(2), new Tile(16), new Tile(2)},
+            {new Tile(8), new Tile(4), new Tile(8), new Tile(4)},
+            {new Tile(4), new Tile(2), new Tile(4), new Tile(64)},
+            {new Tile(2), new Tile(4), new Tile(2), new Tile(32)}
+        }));
+        System.out.println("Test update status - full fail");
         game.updateStatus();
         assertTrue(game.getStatus().equals(GameStatus.FAIL));
     }

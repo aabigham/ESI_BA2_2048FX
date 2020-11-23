@@ -1,4 +1,4 @@
-package com.java2048.view;
+package com.java2048.view.console;
 
 import com.java2048.model.Board;
 import com.java2048.model.Tile;

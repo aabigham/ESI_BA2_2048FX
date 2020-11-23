@@ -2,7 +2,7 @@ package com.java2048.main;
 
 import com.java2048.controller.Controller;
 import com.java2048.model.Game;
-import com.java2048.view.ConsoleView;
+import com.java2048.view.console.ConsoleView;
 
 /**
  * Main class of the game.

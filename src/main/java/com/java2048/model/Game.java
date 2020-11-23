@@ -57,10 +57,10 @@ public class Game implements Model {
      */
     @Override
     public void updateStatus() {
-        if (board.getNbFreeTiles() == 0) {
-            this.status = GameStatus.FAIL;
-        } else if (board.check2048()) {
+        if (board.check2048()) {
             this.status = GameStatus.WIN;
+        } else if (!board.ableToMove()) {
+            this.status = GameStatus.FAIL;
         }
     }
 

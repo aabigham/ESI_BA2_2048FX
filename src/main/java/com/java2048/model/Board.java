@@ -156,10 +156,11 @@ public class Board {
                 tiles[nextRow][nextCol] = currentTile;
                 couldMove = true;
                 tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;
-            } else if (tiles[nextRow][nextCol].canMergeWith(currentTile) && !tiles[nextRow][nextCol].isBlocked()) {
+            } else if (tiles[nextRow][nextCol].getValue() == currentTile.getValue()
+                    && !tiles[nextRow][nextCol].isBlocked()) {
                 /**
                  * There is a tile in the future position and the if statement
-                 * checks if this tilecan merge with the current one, and also
+                 * checks if this tile can merge with the current one, and also
                  * if it is blocked or not
                  */
                 tiles[nextRow][nextCol].setBlocked(true);
@@ -177,12 +178,61 @@ public class Board {
     }
 
     /**
+     * Checks if the board is able to move or not.
+     *
+     * @return true if the board is able to move, false otherwise.
+     */
+    boolean ableToMove() {
+        //If there is at least one empty tile, return true
+        if (oneTileFree()) {
+            return true;
+        }
+
+        //Checks every neighbour of each tile and if the merge is available or not.
+        for (int row = 0; row < SIDE; row++) {
+            for (int col = 0; col < SIDE; col++) {
+                if (tiles[row][col] != null) {
+                    if (testMerge(row + 1, col, tiles[row][col].getValue())) {
+                        return true;
+                    }
+                    if (testMerge(row - 1, col, tiles[row][col].getValue())) {
+                        return true;
+                    }
+                    if (testMerge(row, col + 1, tiles[row][col].getValue())) {
+                        return true;
+                    }
+                    if (testMerge(row, col - 1, tiles[row][col].getValue())) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * This method tests if a tile will be able to merge with the tiles in the
+     * position in parameter.
+     *
+     * @param row the row of the tile to test
+     * @param col the column of the tile to test
+     * @param value the value to test
+     * @return true if the merge is possible, false otherwise.
+     */
+    private boolean testMerge(int row, int col, int value) {
+        if (row < 0 || row > 3 || col < 0 || col > 3) {
+            return false;
+        }
+        return tiles[row][col].getValue() == value;
+    }
+
+    /**
      * Recursive method that adds a random tile in the board only if there is no
      * tile already there. The number can be 2 or 4 but 4 has only one chance
      * out of ten to be chosen.
      */
     void addRandomTile() {
-        if (getNbFreeTiles() == 0) {
+        if (!oneTileFree()) {
             throw new RuntimeException("The board is already full of tiles !");
         }
         int value = (int) (Math.random() * (10 - 0 + 1) + 0) == 0 ? 4 : 2;
@@ -201,16 +251,15 @@ public class Board {
      *
      * @return the number of free tiles.
      */
-    int getNbFreeTiles() {
-        int cpt = 0;
+    private boolean oneTileFree() {
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
                 if (tiles[i][j] == null) {
-                    cpt++;
+                    return true;
                 }
             }
         }
-        return cpt;
+        return false;
     }
 
     /**

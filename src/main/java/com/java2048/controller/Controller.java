@@ -4,7 +4,7 @@ import java.util.Scanner;
 import com.java2048.model.Direction;
 import com.java2048.model.Game;
 import static com.java2048.model.GameStatus.*;
-import com.java2048.view.ConsoleView;
+import com.java2048.view.console.ConsoleView;
 
 /**
  * The controller responds to the user input and performs interactions on the

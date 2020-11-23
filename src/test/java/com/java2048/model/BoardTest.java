@@ -367,21 +367,55 @@ public class BoardTest {
     }
 
     /**
+     * Test of moveTiles method, of class Board.
+     */
+    @Test
+    public void testAbleToMove_Pass() {
+        Board board = new Board(new Tile[][]{
+            {new Tile(16), new Tile(2), new Tile(16), new Tile(2)},
+            {null, new Tile(4), new Tile(8), new Tile(4)},
+            {new Tile(4), new Tile(64), new Tile(64), new Tile(8)},
+            {new Tile(2), new Tile(4), new Tile(2), new Tile(32)}
+        });
+        System.out.println("Test Able to move - Pass");
+        assertTrue(board.ableToMove());
+    }
+
+    /**
+     * Test of moveTiles method, of class Board.
+     */
+    @Test
+    public void testAbleToMove_FullPass() {
+        Board board = new Board(new Tile[][]{
+            {new Tile(16), new Tile(2), new Tile(16), new Tile(2)},
+            {new Tile(8), new Tile(4), new Tile(8), new Tile(4)},
+            {new Tile(4), new Tile(64), new Tile(64), new Tile(8)},
+            {new Tile(2), new Tile(4), new Tile(2), new Tile(32)}
+        });
+        System.out.println("Test Able to move - Full Pass");
+        assertTrue(board.ableToMove());
+    }
+
+    /**
      * Test of addRandomTile method, of class Board.
      */
     @Test
     public void testAddRandomTile() {
-        Board board = new Board(new Tile[][]{
+        Board boardNull = new Board(new Tile[][]{
             {null, null, null, null},
             {null, null, null, null},
             {null, null, null, null},
             {null, null, null, null}
         });
-        board.addRandomTile();
+        Board boardTest = new Board(new Tile[][]{
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        });
+        boardTest.addRandomTile();
         System.out.println("Test addRandomTile");
-        int expResult = 15;
-        int nbFreeTiles = board.getNbFreeTiles();
-        assertEquals(expResult, nbFreeTiles);
+        assertFalse(boardNull.isSimilarTo(boardTest));
     }
 
     /**
@@ -399,23 +433,6 @@ public class BoardTest {
         Assertions.assertThrows(RuntimeException.class, () -> {
             board.addRandomTile();
         });
-    }
-
-    /**
-     * Test of getNbFreeTiles method, of class Board.
-     */
-    @Test
-    public void testGetNbFreeTiles() {
-        Board board = new Board(new Tile[][]{
-            {new Tile(2), new Tile(2), new Tile(2), new Tile(2)},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null}
-        });
-        System.out.println("Test getNbFreeTiles");
-        int expResult = 12;
-        int nbFreeTiles = board.getNbFreeTiles();
-        assertEquals(expResult, nbFreeTiles);
     }
 
     /**
