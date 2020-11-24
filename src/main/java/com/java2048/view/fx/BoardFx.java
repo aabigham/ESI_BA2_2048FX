@@ -56,67 +56,13 @@ public class BoardFx extends GridPane implements Observer {
         this.getChildren().clear();
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
-                Button button = new Button();
-                Tile tile = observable.getBoard().getTileAt(i, j);
-                if (tile == null) {
-                    button.setText("     ");
-                    button.setStyle("-fx-background-color: #CDC1B4");
-                } else {
-                    switch (tile.getValue()) {
-                        case 2:
-                            button.setText("   " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #EEE4DA");
-                            break;
-                        case 4:
-                            button.setText("   " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #EEE1C9");
-                            break;
-                        case 8:
-                            button.setText("   " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #F3B27A");
-                            break;
-                        case 16:
-                            button.setText(" " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #F69664");
-                            break;
-                        case 32:
-                            button.setText(" " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #F77C5F");
-                            break;
-                        case 64:
-                            button.setText(" " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #F75F3B");
-                            break;
-                        case 128:
-                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #EDD073");
-                            break;
-                        case 256:
-                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #EDCC61");
-                            break;
-                        case 512:
-                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #EDC850");
-                            break;
-                        case 1024:
-                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #EDC53F");
-                            break;
-                        case 2048:
-                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                            button.setStyle("-fx-background-color: #EDC22E");
-                            break;
-                        default:
-                            throw new AssertionError();
-                    }
-                }
-                //Disables buttons if the game is over
+                Button buttonFx = new ButtonFx(observable.getBoard().getTileAt(i, j));
+                //Disables the button if the game is over
                 if (observable.getStatus().equals(GameStatus.FAIL)
                         || observable.getStatus().equals(GameStatus.WIN)) {
-                    button.setDisable(true);
+                    buttonFx.setDisable(true);
                 }
-                this.add(button, j, i);
+                this.add(buttonFx, j, i);
             }
         }
 
