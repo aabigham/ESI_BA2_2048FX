@@ -6,6 +6,7 @@
 package com.java2048.view.fx;
 
 import com.java2048.model.Game;
+import com.java2048.model.GameStatus;
 import com.java2048.model.Tile;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -20,6 +21,11 @@ public class BoardFx extends GridPane implements Observer {
     private final int SIDE = 4;
     private final Game observable;
 
+    /**
+     * Constructor the the game board using buttons.
+     *
+     * @param observable the observable game.
+     */
     public BoardFx(Game observable) {
         if (observable == null) {
             throw new IllegalArgumentException("Nothing to observe");
@@ -30,6 +36,7 @@ public class BoardFx extends GridPane implements Observer {
         this.setHgap(10);
         this.setPadding(new Insets(10, 10, 10, 0));
 
+        //Initializes empty tiles
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
                 Button button = new Button("     ");
@@ -41,7 +48,8 @@ public class BoardFx extends GridPane implements Observer {
     }
 
     /**
-     * Updates the board and displays all the tiles (buttons).
+     * Updates the board and displays all the tiles (buttons) with all of the
+     * according colors for each number.
      */
     @Override
     public void update() {
@@ -103,8 +111,14 @@ public class BoardFx extends GridPane implements Observer {
                             throw new AssertionError();
                     }
                 }
+                //Disables buttons if the game is over
+                if (observable.getStatus().equals(GameStatus.FAIL)
+                        || observable.getStatus().equals(GameStatus.WIN)) {
+                    button.setDisable(true);
+                }
                 this.add(button, j, i);
             }
         }
+
     }
 }
