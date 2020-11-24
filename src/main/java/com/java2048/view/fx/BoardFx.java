@@ -10,6 +10,7 @@ import com.java2048.model.GameStatus;
 import com.java2048.model.Tile;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -47,8 +48,8 @@ public class BoardFx extends GridPane implements Observer {
     }
 
     /**
-     * Updates the board and displays all the tiles (buttons) with all of the
-     * according colors for each number.
+     * Updates the board and displays all the tiles with all of the according
+     * colors for each number.
      */
     @Override
     public void update() {
@@ -56,11 +57,6 @@ public class BoardFx extends GridPane implements Observer {
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
                 TileFx tileFx = new TileFx(observable.getBoard().getTileAt(i, j));
-                //Disables the button if the game is over
-                /*if (observable.getStatus().equals(GameStatus.FAIL)
-                        || observable.getStatus().equals(GameStatus.WIN)) {
-                    TileFx.setDisable(true);
-                }*/
                 this.add(tileFx, j, i);
             }
         }

@@ -36,34 +36,40 @@ public class VBoxForScene extends HBox {
         Separator separator = new Separator(Orientation.VERTICAL);
         //TextArea
         TextAreaFx textAreaFx = new TextAreaFx(game);
+        textAreaFx.appendText("Bienvenue au 2048\n");
 
         //Buttons
         VBox vBoxButtons = new VBox();
         vBoxButtons.setSpacing(10);
 
         Button btnRestart = new Button("Recommencer");
-        btnRestart.setDisable(true);
+        btnRestart.setStyle("-fx-background-color: #8F7A66; -fx-font-size: 2em; -fx-text-fill: #FFFFFF");
 
         Button btnStart = new Button("Commencer une partie");
+        btnStart.setStyle("-fx-background-color: #8F7A66; -fx-font-size: 2em; -fx-text-fill: #FFFFFF");
 
-        vBoxButtons.getChildren().addAll(btnStart, btnRestart);
+        vBoxButtons.getChildren().addAll(btnStart);
 
-        //Restart
+        //Restart button action
         btnRestart.setOnAction((ActionEvent t) -> {
             game.reset();
             textAreaFx.clearField();
         });
 
-        //On start
+        //Start button action
         btnStart.setOnAction((ActionEvent t) -> {
-            textAreaFx.appendText("À vous de jouer !\n");
-            this.addEventFilter(KeyEvent.KEY_PRESSED, new ArrowHandler(game));
+            //Init game + add arrow key handler
             game.reset();
-            btnStart.setDisable(true);
-            btnRestart.setDisable(false);
+            this.addEventFilter(KeyEvent.KEY_PRESSED, new ArrowHandler(game));
+
+            //TextArea setup
+            textAreaFx.clearField();
+            textAreaFx.appendText("À vous de jouer !\n");
+
+            //Remove start button & add restart button
             vBoxButtons.getChildren().remove(btnStart);
+            vBoxButtons.getChildren().add(btnRestart);
         });
-        //Buttons end
 
         hBoxMain.getChildren().addAll(boardFx, separator, textAreaFx);
         vBoxMain.getChildren().addAll(hBoxMain, vBoxButtons);
