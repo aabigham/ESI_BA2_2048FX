@@ -17,6 +17,7 @@ public class Game implements Model, Observable {
     Board board;
     GameStatus status;
     int score;
+    boolean couldMove;
     private final List<Observer> observers;
 
     /**
@@ -52,14 +53,15 @@ public class Game implements Model, Observable {
 
     //TODO
     public boolean play(Direction direction) {
-        boolean couldMove = board.moveTiles(direction);
+        boolean flagMove = board.moveTiles(direction);
         if (couldMove) {
             updateScore();
             addRandomTile();
             updateStatus();
         }
+        setCouldMove(flagMove);
         notifyObservers();
-        return couldMove;
+        return flagMove;
     }
 
     /**
@@ -127,6 +129,24 @@ public class Game implements Model, Observable {
      */
     public int getScore() {
         return score;
+    }
+
+    /**
+     * Getter of couldMove.
+     *
+     * @return true if the tiles could move, false otherwise.
+     */
+    public boolean couldMove() {
+        return couldMove;
+    }
+
+    /**
+     * Setter of couldMove.
+     *
+     * @param couldMove the new boolean value.
+     */
+    public void setCouldMove(boolean couldMove) {
+        this.couldMove = couldMove;
     }
 
     /**

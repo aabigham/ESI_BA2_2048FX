@@ -21,16 +21,16 @@ public class ArrowHandler implements EventHandler<KeyEvent> {
     @Override
     public void handle(KeyEvent event) {
         if (event.getCode() == KeyCode.UP) {
-            game.move(Direction.UP);
+            game.play(Direction.UP);
         }
         if (event.getCode() == KeyCode.DOWN) {
-            game.move(Direction.DOWN);
+            game.play(Direction.DOWN);
         }
         if (event.getCode() == KeyCode.RIGHT) {
-            game.move(Direction.RIGHT);
+            game.play(Direction.RIGHT);
         }
         if (event.getCode() == KeyCode.LEFT) {
-            game.move(Direction.LEFT);
+            game.play(Direction.LEFT);
         }
         event.consume();
     }

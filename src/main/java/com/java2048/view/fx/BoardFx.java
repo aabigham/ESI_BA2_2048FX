@@ -50,15 +50,57 @@ public class BoardFx extends GridPane implements Observer {
                 Button button = new Button();
                 Tile tile = observable.getBoard().getTileAt(i, j);
                 if (tile == null) {
-                    button.setText("    ");
-                } else if (tile.getValue() < 10) {
-                    button.setText("   " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                } else if (tile.getValue() >= 10 && tile.getValue() <= 99) {
-                    button.setText("  " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
-                } else if (tile.getValue() >= 99 && tile.getValue() <= 999) {
-                    button.setText(" " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                    button.setText("     ");
+                    button.setStyle("-fx-background-color: #CDC1B4");
                 } else {
-                    button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                    switch (tile.getValue()) {
+                        case 2:
+                            button.setText("   " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #EEE4DA");
+                            break;
+                        case 4:
+                            button.setText("   " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #EEE1C9");
+                            break;
+                        case 8:
+                            button.setText("   " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #F3B27A");
+                            break;
+                        case 16:
+                            button.setText(" " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #F69664");
+                            break;
+                        case 32:
+                            button.setText(" " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #F77C5F");
+                            break;
+                        case 64:
+                            button.setText(" " + String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #F75F3B");
+                            break;
+                        case 128:
+                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #EDD073");
+                            break;
+                        case 256:
+                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #EDCC61");
+                            break;
+                        case 512:
+                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #EDC850");
+                            break;
+                        case 1024:
+                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #EDC53F");
+                            break;
+                        case 2048:
+                            button.setText(String.valueOf(observable.getBoard().getTileAt(i, j).getValue()));
+                            button.setStyle("-fx-background-color: #EDC22E");
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
                 }
                 this.add(button, j, i);
             }
