@@ -51,7 +51,12 @@ public class Game implements Model, Observable {
         notifyObservers();
     }
 
-    //TODO
+    /**
+     * Plays the game. (ONLY USED IN THE JAVA FX VIEW FOR THE MOMENT)
+     *
+     * @param direction the directions in which to move the tiles.
+     * @return true if at least one tile moved, false otherwise.
+     */
     public boolean play(Direction direction) {
         boolean flagMove = board.moveTiles(direction);
         if (flagMove) {
