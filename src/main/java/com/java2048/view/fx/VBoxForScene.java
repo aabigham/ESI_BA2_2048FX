@@ -40,9 +40,12 @@ public class VBoxForScene extends HBox {
         //Buttons
         VBox vBoxButtons = new VBox();
         vBoxButtons.setSpacing(10);
+
         Button btnRestart = new Button("Recommencer");
         btnRestart.setDisable(true);
+
         Button btnStart = new Button("Commencer une partie");
+
         vBoxButtons.getChildren().addAll(btnStart, btnRestart);
 
         //Restart

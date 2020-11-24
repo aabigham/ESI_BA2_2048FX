@@ -31,8 +31,8 @@ public class MainFx extends Application {
     public void start(Stage primaryStage) {
         Scene scene = new Scene(new VBoxForScene(new Game()));
 
-        primaryStage.setHeight(325);
-        primaryStage.setWidth(420);
+        primaryStage.setHeight(475);
+        primaryStage.setWidth(565);
         primaryStage.setResizable(false);
         primaryStage.setTitle("2048 FX");
         primaryStage.setScene(scene);

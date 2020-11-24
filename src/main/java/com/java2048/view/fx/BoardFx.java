@@ -39,9 +39,8 @@ public class BoardFx extends GridPane implements Observer {
         //Initializes empty tiles
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
-                Button button = new Button("     ");
-                button.setStyle("-fx-background-color: #CDC1B4");
-                this.add(button, j, i);
+                TileFx tileFx = new TileFx(null);
+                this.add(tileFx, j, i);
             }
         }
         observable.registerObserver(this);
@@ -56,13 +55,13 @@ public class BoardFx extends GridPane implements Observer {
         this.getChildren().clear();
         for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
-                Button buttonFx = new ButtonFx(observable.getBoard().getTileAt(i, j));
+                TileFx tileFx = new TileFx(observable.getBoard().getTileAt(i, j));
                 //Disables the button if the game is over
-                if (observable.getStatus().equals(GameStatus.FAIL)
+                /*if (observable.getStatus().equals(GameStatus.FAIL)
                         || observable.getStatus().equals(GameStatus.WIN)) {
-                    buttonFx.setDisable(true);
-                }
-                this.add(buttonFx, j, i);
+                    TileFx.setDisable(true);
+                }*/
+                this.add(tileFx, j, i);
             }
         }
 
