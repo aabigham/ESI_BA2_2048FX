@@ -54,7 +54,7 @@ public class Game implements Model, Observable {
     //TODO
     public boolean play(Direction direction) {
         boolean flagMove = board.moveTiles(direction);
-        if (couldMove) {
+        if (flagMove) {
             updateScore();
             addRandomTile();
             updateStatus();

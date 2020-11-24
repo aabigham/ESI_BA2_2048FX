@@ -17,40 +17,58 @@ import javafx.scene.layout.VBox;
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
 public class VBoxForScene extends HBox {
-
+    
     private BoardFx boardFx;
-
+    
     public VBoxForScene(Game game) {
-        this.setPadding(new Insets(0, 0, 0, 10));
+        this.setPadding(new Insets(10));
         this.setStyle("-fx-background-color: #AD9D8F");
         VBox vBoxMain = new VBox();
         HBox hBoxMain = new HBox();
         hBoxMain.setPadding(new Insets(0, 0, 20, 0));
 
         //Board
+        //VBox vBoxBoard = new VBox();
         boardFx = new BoardFx(game);
-        game.reset();
+        //game.reset();
+        //vBoxBoard.getChildren().add(boardFx);
         //Board
 
         Separator separator = new Separator(Orientation.VERTICAL);
 
         //TextArea
-        //TextArea textArea = new TextArea();
+        //VBox vBoxTextArea = new VBox();
+        TextArea textArea = new TextArea();
+        //vBoxTextArea.getChildren().add(textArea);
         //TextArea
+
         //Arrow key event
         this.addEventFilter(KeyEvent.KEY_PRESSED, new ArrowHandler(game));
         //Arrow key end
 
-        //Restart button
+        //Buttons
+        VBox vBoxButtons = new VBox();
+        vBoxButtons.setSpacing(10);
         Button btnRestart = new Button("Recommencer");
+        Button btnStart = new Button("Commencer une partie");
+        vBoxButtons.getChildren().addAll(btnStart, btnRestart);
+        
         btnRestart.setOnAction((ActionEvent t) -> {
             game.reset();
         });
-        //Restart button end
+        btnRestart.setDisable(true);
+        
+        btnStart.setOnAction((ActionEvent t) -> {
+            game.reset();
+            btnStart.setDisable(true);
+            btnRestart.setDisable(false);
+            vBoxButtons.getChildren().remove(btnStart);
+        });
+        //Buttons end
 
-        hBoxMain.getChildren().addAll(boardFx, separator);
-        vBoxMain.getChildren().addAll(hBoxMain, btnRestart);
+        hBoxMain.getChildren().addAll(boardFx, separator, textArea);
+        vBoxMain.getChildren().addAll(hBoxMain, vBoxButtons);
         this.getChildren().add(vBoxMain);
     }
-
+    
 }

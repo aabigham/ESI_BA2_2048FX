@@ -30,17 +30,18 @@ public class BoardFx extends GridPane implements Observer {
         this.setHgap(10);
         this.setPadding(new Insets(10, 10, 10, 0));
 
-        /*for (int i = 0; i < SIDE; i++) {
+        for (int i = 0; i < SIDE; i++) {
             for (int j = 0; j < SIDE; j++) {
-                Button button = new Button("    ");
+                Button button = new Button("     ");
+                button.setStyle("-fx-background-color: #CDC1B4");
                 this.add(button, j, i);
             }
-        }*/
+        }
         observable.registerObserver(this);
     }
 
     /**
-     * Updates the board.
+     * Updates the board and displays all the tiles (buttons).
      */
     @Override
     public void update() {
