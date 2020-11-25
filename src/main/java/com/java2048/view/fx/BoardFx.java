@@ -6,11 +6,7 @@
 package com.java2048.view.fx;
 
 import com.java2048.model.Game;
-import com.java2048.model.GameStatus;
-import com.java2048.model.Tile;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.effect.BlendMode;
 import javafx.scene.layout.GridPane;
 
 /**

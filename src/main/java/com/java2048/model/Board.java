@@ -33,6 +33,7 @@ public class Board {
      */
     void initialize() {
         this.tiles = new Tile[SIDE][SIDE];
+        this.scoreAdditioner = 0;
         addRandomTile();
         addRandomTile();
     }
@@ -247,9 +248,9 @@ public class Board {
     }
 
     /**
-     * Gets the number of free tiles.
+     * This methods checks if there is at least one free tile on the board.
      *
-     * @return the number of free tiles.
+     * @return true if there is one free tile, false otherwise.
      */
     private boolean oneTileFree() {
         for (int i = 0; i < SIDE; i++) {
@@ -291,9 +292,7 @@ public class Board {
 
     /**
      * This method checks if a board has the same values of another board, at
-     * the same exact position for each tile.
-     *
-     * This method is used in tests.
+     * the same exact position for each tile (used in tests).
      *
      * @param board the board we want to check
      * @return true if the board is similar, false otherwise.
