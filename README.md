@@ -2,12 +2,6 @@
 
 2048 est un jeu de plateau qui permet de déplacer des tuiles composées de multiple de 2. Le but du jeu est de fusionner les tuiles pour atteindre le score maximum de 2048.
 
-## (Java FX) Screenshot
-![Screenshot](/images/screenshotFx.PNG?raw=true)
-
-## (Console) Screenshot
-![Screenshot](/images/screenshot.PNG?raw=true)
-
 ## Règles du jeu
 
 Il suffit d'utiliser les touches ZQSD (version console) ou les flèches du clavier (version FX) pour déplacer les tuiles vers le haut, la gauche, le bas ou la droite.
@@ -17,4 +11,11 @@ Il suffit d'utiliser les touches ZQSD (version console) ou les flèches du clavi
 Lorsqu'il n'y a plus de place sur le plateau pour faire apparaitre une nouvelle tuile, la partie est perdue.
 
 Lorsque la tuile 2048 est atteinte, la partie est gagnée !
+
+## (Java FX) Screenshot
+![Screenshot](/images/screenshotFx.PNG?raw=true)
+
+## (Console) Screenshot
+![Screenshot](/images/screenshot.PNG?raw=true)
+
 
