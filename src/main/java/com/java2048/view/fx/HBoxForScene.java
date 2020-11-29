@@ -4,6 +4,7 @@ import com.java2048.model.Game;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.input.KeyEvent;
@@ -16,14 +17,15 @@ import javafx.scene.layout.VBox;
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
-public class VBoxForScene extends HBox {
+public class HBoxForScene extends HBox {
 
     /**
-     * Constructor of the VBox.
-     *
-     * @param game the model (game).
+     * Constructor of the HBox (scene).
      */
-    public VBoxForScene(Game game) {
+    public HBoxForScene() {
+        Game game = new Game();
+        game.init();
+
         this.setPadding(new Insets(10));
         this.setStyle("-fx-background-color: #AD9D8F");
         VBox vBoxMain = new VBox();
@@ -32,11 +34,16 @@ public class VBoxForScene extends HBox {
 
         //Board
         BoardFx boardFx = new BoardFx(game);
+
         //Separator
         Separator separator = new Separator(Orientation.VERTICAL);
+
         //TextArea
         TextAreaFx textAreaFx = new TextAreaFx(game);
         textAreaFx.appendText("Bienvenue au 2048\n");
+
+        //Score
+        ScoreTile scoreTile = new ScoreTile(game);
 
         //Buttons
         VBox vBoxButtons = new VBox();
@@ -48,18 +55,18 @@ public class VBoxForScene extends HBox {
         Button btnStart = new Button("Commencer une partie");
         btnStart.setStyle("-fx-background-color: #8F7A66; -fx-font-size: 2em; -fx-text-fill: #FFFFFF");
 
-        vBoxButtons.getChildren().addAll(btnStart);
+        vBoxButtons.getChildren().addAll(btnStart, scoreTile);
 
         //Restart button action
         btnRestart.setOnAction((ActionEvent t) -> {
-            game.reset();
+            game.init();
             textAreaFx.clearField();
         });
 
         //Start button action
         btnStart.setOnAction((ActionEvent t) -> {
             //Init game + add arrow key handler
-            game.reset();
+            game.init();
             this.addEventFilter(KeyEvent.KEY_PRESSED, new ArrowHandler(game));
 
             //TextArea setup
@@ -71,9 +78,14 @@ public class VBoxForScene extends HBox {
             vBoxButtons.getChildren().add(btnRestart);
         });
 
-        hBoxMain.getChildren().addAll(boardFx, separator, textAreaFx);
+        //Vbox score / text area
+        VBox scoreTextArea = new VBox();
+        scoreTextArea.setSpacing(10);
+        scoreTextArea.getChildren().addAll(scoreTile, textAreaFx);
+
+        hBoxMain.getChildren().addAll(boardFx, separator, scoreTextArea);
         vBoxMain.getChildren().addAll(hBoxMain, vBoxButtons);
-        this.getChildren().add(vBoxMain);
+        this.getChildren().addAll(vBoxMain);
     }
 
 }

@@ -14,7 +14,7 @@ public class Board {
     private int scoreAdditioner;
 
     /**
-     * Constructor of Board.
+     * Constructor of Board with tiles (USED FOR TESTS).
      *
      * @param tiles the tiles of the board
      */

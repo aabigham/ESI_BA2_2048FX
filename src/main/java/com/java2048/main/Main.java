@@ -17,7 +17,10 @@ public class Main {
      * @param args an array of command-line arguments for the application
      */
     public static void main(String[] args) {
-        Controller controller = new Controller(new Game(), new ConsoleView());
+        Game game = new Game();
+        game.init();
+
+        Controller controller = new Controller(game, new ConsoleView());
         controller.startGame();
     }
 

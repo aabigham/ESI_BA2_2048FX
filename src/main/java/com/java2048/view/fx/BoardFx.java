@@ -15,8 +15,8 @@ import javafx.scene.layout.GridPane;
  */
 public class BoardFx extends GridPane implements Observer {
 
-    private final int SIDE = 4;
-    private final Game observable;
+    private final int SIDE;
+    private Game observable;
 
     /**
      * Constructor the the game board using buttons.
@@ -28,6 +28,8 @@ public class BoardFx extends GridPane implements Observer {
             throw new IllegalArgumentException("Nothing to observe");
         }
         this.observable = (Game) observable;
+
+        this.SIDE = 4;
 
         this.setVgap(10);
         this.setHgap(10);

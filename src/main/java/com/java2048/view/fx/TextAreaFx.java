@@ -26,6 +26,7 @@ public class TextAreaFx extends TextArea implements Observer {
         this.observable = (Game) observable;
 
         this.setPrefWidth(200);
+        this.setPrefHeight(278);
         this.setEditable(false);
 
         observable.registerObserver(this);

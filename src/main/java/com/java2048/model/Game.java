@@ -21,7 +21,7 @@ public class Game implements Model, Observable {
     private final List<Observer> observers;
 
     /**
-     * Constructor of Game. (USED FOR TESTS ATM)
+     * Constructor of Game (USED FOR TESTS ATM).
      *
      * @param board the board of the game
      */
@@ -37,16 +37,12 @@ public class Game implements Model, Observable {
      */
     public Game() {
         observers = new ArrayList<>();
-        this.board = new Board();
-        this.board.initialize();
-        this.status = GameStatus.IN_PROGRESS;
-        this.score = 0;
     }
 
     /**
      * Resets the game.
      */
-    public void reset() {
+    public void init() {
         this.board = new Board();
         this.board.initialize();
         this.status = GameStatus.IN_PROGRESS;
