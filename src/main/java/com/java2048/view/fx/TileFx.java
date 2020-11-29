@@ -8,6 +8,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
+ * This class represents a tile on the board.
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
@@ -16,6 +17,12 @@ public class TileFx extends StackPane {
     private Rectangle rectangle;
     private Text text;
 
+    /**
+     * Construcor of TileFx. Changes the color of the tile according to its
+     * number.
+     *
+     * @param tile the tile from the model.
+     */
     public TileFx(Tile tile) {
         rectangle = new Rectangle(70, 70);
         text = new Text();

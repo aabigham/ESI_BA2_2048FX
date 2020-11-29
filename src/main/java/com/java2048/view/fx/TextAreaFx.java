@@ -38,7 +38,7 @@ public class TextAreaFx extends TextArea implements Observer {
      */
     @Override
     public void update() {
-        //Avoid the error message at start
+        //Avoid the "mouvement impossible" message at start
         boolean flagMove = observable.couldMove();
         if (observable.getScore() == 0) {
             flagMove = true;

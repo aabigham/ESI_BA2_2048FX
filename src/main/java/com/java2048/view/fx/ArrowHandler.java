@@ -14,7 +14,7 @@ import javafx.scene.input.KeyEvent;
  */
 public class ArrowHandler implements EventHandler<KeyEvent> {
 
-    private Game game;
+    private final Game game;
 
     /**
      * Constructor of the handler.

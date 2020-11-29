@@ -52,16 +52,16 @@ public class Board {
          */
         boolean couldMove = false;
 
-        //Applies the move method to each tile in the correct path, according to its direction
+        //Applies the moveTile method to each tile in the correct path, according to its direction
         switch (direction) {
             case LEFT:
                 //Read from left to right (col decrement), 2 2 4 8 --> 4 4 8 0 
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = 0; col < SIDE; col++) {
                         if (!couldMove) {
-                            couldMove = move(row, col, direction);
+                            couldMove = moveTile(row, col, direction);
                         } else {
-                            move(row, col, direction);
+                            moveTile(row, col, direction);
                         }
                     }
                 }
@@ -71,9 +71,9 @@ public class Board {
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = SIDE - 1; col >= 0; col--) {
                         if (!couldMove) {
-                            couldMove = move(row, col, direction);
+                            couldMove = moveTile(row, col, direction);
                         } else {
-                            move(row, col, direction);
+                            moveTile(row, col, direction);
                         }
                     }
                 }
@@ -83,9 +83,9 @@ public class Board {
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = 0; col < SIDE; col++) {
                         if (!couldMove) {
-                            couldMove = move(row, col, direction);
+                            couldMove = moveTile(row, col, direction);
                         } else {
-                            move(row, col, direction);
+                            moveTile(row, col, direction);
                         }
                     }
                 }
@@ -95,9 +95,9 @@ public class Board {
                 for (int row = SIDE - 1; row >= 0; row--) {
                     for (int col = 0; col < SIDE; col++) {
                         if (!couldMove) {
-                            couldMove = move(row, col, direction);
+                            couldMove = moveTile(row, col, direction);
                         } else {
-                            move(row, col, direction);
+                            moveTile(row, col, direction);
                         }
                     }
                 }
@@ -126,15 +126,15 @@ public class Board {
      * @param row the row of the tile
      * @param col the column of the tile
      * @param direction the direction in which the tile should slide to
-     * @return true if the tile was able to move or merge, false otherwise.
+     * @return true if the tile was able to moveTile or merge, false otherwise.
      */
-    private boolean move(int row, int col, Direction direction) {
+    private boolean moveTile(int row, int col, Direction direction) {
         //Get the current tile, if it's null returns false
         Tile currentTile = tiles[row][col];
         if (currentTile == null) {
             return false;
         }
-        //This will be used to know if the tile was able to move or not
+        //This will be used to know if the tile was able to moveTile or not
         boolean couldMove = false;
 
         //Variables to calculate the next position
@@ -143,7 +143,7 @@ public class Board {
         int nextRow = row;
         int nextCol = col;
 
-        //While the tile is able to move to an empty place or able to merge, or if it's simply not hitting a wall 
+        //While the tile is able to moveTile to an empty place or able to merge, or if it's simply not hitting a wall 
         while (true) {
             nextRow += verticalDelta;
             nextCol += horizontalDelta;
@@ -179,9 +179,9 @@ public class Board {
     }
 
     /**
-     * Checks if the board is able to move or not.
+     * Checks if the board is able to moveTile or not.
      *
-     * @return true if the board is able to move, false otherwise.
+     * @return true if the board is able to moveTile, false otherwise.
      */
     boolean ableToMove() {
         //If there is at least one empty tile, return true
@@ -322,7 +322,7 @@ public class Board {
      *
      * @return the score additioner;
      */
-    public int getScoreAdditioner() {
+    int getScoreAdditioner() {
         return scoreAdditioner;
     }
 

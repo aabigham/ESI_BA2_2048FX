@@ -4,7 +4,6 @@ import com.java2048.model.Game;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.input.KeyEvent;
@@ -38,12 +37,12 @@ public class HBoxForScene extends HBox {
         //Separator
         Separator separator = new Separator(Orientation.VERTICAL);
 
+        //Score
+        ScoreTile scoreTile = new ScoreTile(game);
+
         //TextArea
         TextAreaFx textAreaFx = new TextAreaFx(game);
         textAreaFx.appendText("Bienvenue au 2048\n");
-
-        //Score
-        ScoreTile scoreTile = new ScoreTile(game);
 
         //Buttons
         VBox vBoxButtons = new VBox();
@@ -78,7 +77,7 @@ public class HBoxForScene extends HBox {
             vBoxButtons.getChildren().add(btnRestart);
         });
 
-        //Vbox score / text area
+        //Vbox score TextArea
         VBox scoreTextArea = new VBox();
         scoreTextArea.setSpacing(10);
         scoreTextArea.getChildren().addAll(scoreTile, textAreaFx);
