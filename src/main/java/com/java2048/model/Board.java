@@ -156,7 +156,7 @@ public class Board {
                 //If there is nothing in the new position, moves the current tile there
                 tiles[nextRow][nextCol] = currentTile;
                 couldMove = true;
-                tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;
+                tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;//old pos = null
             } else if (tiles[nextRow][nextCol].getValue() == currentTile.getValue()
                     && !tiles[nextRow][nextCol].isBlocked()) {
                 /**
@@ -168,7 +168,7 @@ public class Board {
                 tiles[nextRow][nextCol].setValue(tiles[nextRow][nextCol].getValue() * 2);
                 this.scoreAdditioner += tiles[nextRow][nextCol].getValue();
                 couldMove = true;
-                tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;
+                tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;//old pos = null
             } else {
                 //Probably never going to get there
                 break;
