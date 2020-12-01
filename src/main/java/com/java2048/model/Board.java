@@ -54,8 +54,8 @@ public class Board {
 
         //Applies the moveTile method to each tile in the correct path, according to its direction
         switch (direction) {
-            case LEFT:
-                //Read from left to right (col decrement), 2 2 4 8 --> 4 4 8 0 
+            case UP:
+                //Read from top to bottom (row decrement)
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = 0; col < SIDE; col++) {
                         if (!couldMove) {
@@ -66,20 +66,8 @@ public class Board {
                     }
                 }
                 break;
-            case RIGHT:
-                //Read columns from right to left (col increment), 2 2 4 8 --> 0 4 4 8 
-                for (int row = 0; row < SIDE; row++) {
-                    for (int col = SIDE - 1; col >= 0; col--) {
-                        if (!couldMove) {
-                            couldMove = moveTile(row, col, direction);
-                        } else {
-                            moveTile(row, col, direction);
-                        }
-                    }
-                }
-                break;
-            case UP:
-                //Read from top to bottom (row decrement)
+            case LEFT:
+                //Read from left to right (col decrement)
                 for (int row = 0; row < SIDE; row++) {
                     for (int col = 0; col < SIDE; col++) {
                         if (!couldMove) {
@@ -94,6 +82,18 @@ public class Board {
                 //Read rows from bottom to top (row increment)
                 for (int row = SIDE - 1; row >= 0; row--) {
                     for (int col = 0; col < SIDE; col++) {
+                        if (!couldMove) {
+                            couldMove = moveTile(row, col, direction);
+                        } else {
+                            moveTile(row, col, direction);
+                        }
+                    }
+                }
+                break;
+            case RIGHT:
+                //Read columns from right to left (col increment) 
+                for (int row = 0; row < SIDE; row++) {
+                    for (int col = SIDE - 1; col >= 0; col--) {
                         if (!couldMove) {
                             couldMove = moveTile(row, col, direction);
                         } else {
@@ -129,7 +129,7 @@ public class Board {
      * @return true if the tile was able to moveTile or merge, false otherwise.
      */
     private boolean moveTile(int row, int col, Direction direction) {
-        //Get the current tile, if it's null returns false
+        //Get the current tile, if it's null returns false (cannot move nothing)
         Tile currentTile = tiles[row][col];
         if (currentTile == null) {
             return false;
@@ -143,17 +143,22 @@ public class Board {
         int nextRow = row;
         int nextCol = col;
 
-        //While the tile is able to moveTile to an empty place or able to merge, or if it's simply not hitting a wall 
+        /**
+         * Each loop turn will calculate the new position and check if the new
+         * position is out of bounds
+         */
         while (true) {
             nextRow += verticalDelta;
             nextCol += horizontalDelta;
+
             //New position out of bounds ? if yes, break
             if (nextRow < 0 || nextRow > SIDE - 1 || nextCol < 0 || nextCol > SIDE - 1) {
                 break;
             }
+            //New position is inside the board at this point
 
+            //If there is nothing in the new position, moves the current tile there
             if (tiles[nextRow][nextCol] == null) {
-                //If there is nothing in the new position, moves the current tile there
                 tiles[nextRow][nextCol] = currentTile;
                 couldMove = true;
                 tiles[nextRow - verticalDelta][nextCol - horizontalDelta] = null;//old pos = null
