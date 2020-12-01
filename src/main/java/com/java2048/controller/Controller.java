@@ -37,12 +37,8 @@ public class Controller {
             view.displayScore(game.getScore()); //Display score
             view.displayBoard(game.getBoard()); //Display board
 
-            //If a tile moved, updates score, adds a new tile & updates the status
-            if (game.move(askDirection())) {
-                game.updateScore();
-                game.addRandomTile();
-                game.updateStatus();
-            }
+            //Asks the direction and plays accordingly
+            game.play(askDirection());
         }
 
         //After the loop breaks, shows score, board and the end message.

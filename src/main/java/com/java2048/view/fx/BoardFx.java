@@ -5,6 +5,8 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 
 /**
+ * This class represents the board on which are placed all the tiles of the
+ * game.
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
