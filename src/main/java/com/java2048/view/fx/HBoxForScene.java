@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
- * This class creates the main VBox (root) containing every below him in the
+ * This class creates the main HBox (root) containing every below him in the
  * hierachy.
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
@@ -60,6 +60,7 @@ public class HBoxForScene extends HBox {
         btnRestart.setOnAction((ActionEvent t) -> {
             game.init();
             textAreaFx.clearField();
+            textAreaFx.appendText("Bonne chance !\n");
         });
 
         //Start button action
