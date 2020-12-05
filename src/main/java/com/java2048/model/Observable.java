@@ -1,4 +1,6 @@
-package com.java2048.view.fx;
+package com.java2048.model;
+
+import com.java2048.view.fx.Observer;
 
 /**
  * This class represents an observable object. An observable object can have one

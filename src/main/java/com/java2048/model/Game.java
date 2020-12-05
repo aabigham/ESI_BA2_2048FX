@@ -1,6 +1,5 @@
 package com.java2048.model;
 
-import com.java2048.view.fx.Observable;
 import com.java2048.view.fx.Observer;
 import java.util.ArrayList;
 import java.util.List;
