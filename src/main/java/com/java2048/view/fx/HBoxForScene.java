@@ -36,6 +36,7 @@ public class HBoxForScene extends HBox {
 
         //Separator
         Separator separator = new Separator(Orientation.VERTICAL);
+        separator.setPadding(new Insets(0, 8, 0, 0));
 
         //Score
         ScoreTile scoreTile = new ScoreTile(game);

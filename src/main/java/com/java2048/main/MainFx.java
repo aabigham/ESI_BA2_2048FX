@@ -31,7 +31,7 @@ public class MainFx extends Application {
         Scene scene = new Scene(new HBoxForScene());
 
         primaryStage.setHeight(460);
-        primaryStage.setWidth(565);
+        primaryStage.setWidth(590);
         primaryStage.setResizable(false);
         primaryStage.setTitle("2048 FX");
         primaryStage.setScene(scene);
