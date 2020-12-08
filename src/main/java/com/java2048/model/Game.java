@@ -20,7 +20,7 @@ public class Game implements Model, Observable {
     private final List<Observer> observers;
 
     /**
-     * Constructor of Game (USED FOR TESTS ATM).
+     * Constructor of Game with a board (USED FOR TESTS ATM).
      *
      * @param board the board of the game
      */
@@ -39,9 +39,10 @@ public class Game implements Model, Observable {
     }
 
     /**
-     * Resets the game.
+     * Resets or intializes the game.
      */
-    public void init() {
+    @Override
+    public void initialize() {
         this.board = new Board();
         this.board.initialize();
         this.status = GameStatus.IN_PROGRESS;
@@ -50,11 +51,14 @@ public class Game implements Model, Observable {
     }
 
     /**
-     * Plays the game. (ONLY USED IN THE JAVA FX VIEW FOR THE MOMENT)
+     * Plays the game and moves the tiles in the desired direction. Also updates
+     * the status, the score and adds a random tile if the tiles were able to
+     * move.
      *
      * @param direction the directions in which to move the tiles.
      * @return true if at least one tile moved, false otherwise.
      */
+    @Override
     public boolean play(Direction direction) {
         boolean flagMove = board.moveTiles(direction);
         if (flagMove) {
@@ -65,17 +69,6 @@ public class Game implements Model, Observable {
         setCouldMove(flagMove);
         notifyObservers();
         return flagMove;
-    }
-
-    /**
-     * Moves all the tiles in the desired direction.
-     *
-     * @param direction the direction in which to move the tiles
-     * @return true if at least one tile moved, false otherwise.
-     */
-    @Override
-    public boolean move(Direction direction) {
-        return board.moveTiles(direction);
     }
 
     /**

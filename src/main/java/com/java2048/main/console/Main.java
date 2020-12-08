@@ -1,4 +1,4 @@
-package com.java2048.main;
+package com.java2048.main.console;
 
 import com.java2048.controller.Controller;
 import com.java2048.model.Game;
@@ -18,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
         Game game = new Game();
-        game.init();
+        game.initialize();
 
         Controller controller = new Controller(game, new ConsoleView());
         controller.startGame();

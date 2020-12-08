@@ -75,7 +75,7 @@ public class GameTest {
             {null, null, null, null}
         }));
         System.out.println("Test update score");
-        game.move(Direction.DOWN);
+        game.play(Direction.DOWN);
         game.updateScore();
         assertTrue(game.getScore() == 4);
     }
@@ -92,7 +92,7 @@ public class GameTest {
             {null, null, null, null}
         }));
         System.out.println("Test update score - no update");
-        game.move(Direction.DOWN);
+        game.play(Direction.DOWN);
         game.updateScore();
         assertTrue(game.getScore() == 0);
     }

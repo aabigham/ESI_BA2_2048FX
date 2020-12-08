@@ -1,9 +1,11 @@
-package com.java2048.main;
+package com.java2048.main.fx;
 
-import com.java2048.view.fx.HBoxForScene;
+import com.java2048.model.Game;
+import com.java2048.view.fx.VBoxForScene;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -28,7 +30,8 @@ public class MainFx extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = new Scene(new HBoxForScene());
+        Game game = new Game();
+        Scene scene = new Scene(new VBoxForScene(game));
 
         primaryStage.setHeight(460);
         primaryStage.setWidth(590);
@@ -37,4 +40,5 @@ public class MainFx extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 }

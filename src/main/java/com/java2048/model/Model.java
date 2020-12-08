@@ -8,12 +8,19 @@ package com.java2048.model;
 public interface Model {
 
     /**
-     * Moves all the tiles in the desired direction.
+     * Resets or intializes the game.
+     */
+    public void initialize();
+
+    /**
+     * Plays the game and moves the tiles in the desired direction. Also updates
+     * the status, the score and adds a random tile if the tiles were able to
+     * move.
      *
-     * @param direction the direction in which to move the tiles
+     * @param direction the directions in which to move the tiles.
      * @return true if at least one tile moved, false otherwise.
      */
-    boolean move(Direction direction);
+    public boolean play(Direction direction);
 
     /**
      * This method adds a random tile on the board, can be a 2 or a 4. The 4 has

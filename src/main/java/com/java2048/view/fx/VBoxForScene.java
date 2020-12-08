@@ -16,18 +16,16 @@ import javafx.scene.layout.VBox;
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
-public class HBoxForScene extends HBox {
+public class VBoxForScene extends VBox {
 
     /**
      * Constructor of the HBox (scene).
+     *
+     * @param game the game model
      */
-    public HBoxForScene() {
-        Game game = new Game();
-        game.init();
-
+    public VBoxForScene(Game game) {
         this.setPadding(new Insets(10));
         this.setStyle("-fx-background-color: #AD9D8F");
-        VBox vBoxMain = new VBox();
         HBox hBoxMain = new HBox();
         hBoxMain.setPadding(new Insets(0, 0, 20, 0));
 
@@ -36,7 +34,7 @@ public class HBoxForScene extends HBox {
 
         //Separator
         Separator separator = new Separator(Orientation.VERTICAL);
-        separator.setPadding(new Insets(0, 8, 0, 0));
+        separator.setPadding(new Insets(0, 6, 0, 0));
 
         //Score
         ScoreTile scoreTile = new ScoreTile(game);
@@ -59,7 +57,7 @@ public class HBoxForScene extends HBox {
 
         //Restart button action
         btnRestart.setOnAction((ActionEvent t) -> {
-            game.init();
+            game.initialize();
             textAreaFx.clearField();
             textAreaFx.appendText("Bonne chance !\n");
         });
@@ -67,7 +65,7 @@ public class HBoxForScene extends HBox {
         //Start button action
         btnStart.setOnAction((ActionEvent t) -> {
             //Init game + add arrow key handler
-            game.init();
+            game.initialize();
             this.addEventFilter(KeyEvent.KEY_PRESSED, new ArrowHandler(game));
 
             //TextArea setup
@@ -85,8 +83,7 @@ public class HBoxForScene extends HBox {
         scoreTextArea.getChildren().addAll(scoreTile, textAreaFx);
 
         hBoxMain.getChildren().addAll(boardFx, separator, scoreTextArea);
-        vBoxMain.getChildren().addAll(hBoxMain, vBoxButtons);
-        this.getChildren().addAll(vBoxMain);
+        this.getChildren().addAll(hBoxMain, vBoxButtons);
     }
 
 }
