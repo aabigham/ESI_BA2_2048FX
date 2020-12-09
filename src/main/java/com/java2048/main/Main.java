@@ -1,4 +1,4 @@
-package com.java2048.main.console;
+package com.java2048.main;
 
 import com.java2048.controller.Controller;
 import com.java2048.model.Game;

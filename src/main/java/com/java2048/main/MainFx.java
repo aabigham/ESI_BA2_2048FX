@@ -1,4 +1,4 @@
-package com.java2048.main.fx;
+package com.java2048.main;
 
 import com.java2048.model.Game;
 import com.java2048.view.fx.VBoxForScene;
