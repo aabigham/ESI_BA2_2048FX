@@ -20,6 +20,7 @@ public class Board {
      */
     public Board(Tile[][] tiles) {
         this.tiles = tiles;
+        this.scoreAdditioner = 0;
     }
 
     /**
@@ -47,8 +48,7 @@ public class Board {
     boolean moveTiles(Direction direction) {
         /**
          * This variable be used to know if at least one tile was able to move
-         * or not. Once this is set to true, it will never go back to false due
-         * to the if statements inside the for loops.
+         * or not. Once this is set to true, it will never go back to false.
          */
         boolean couldMove = false;
 

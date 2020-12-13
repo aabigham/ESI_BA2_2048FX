@@ -1,10 +1,9 @@
 package com.java2048.view.fx;
 
+import com.java2048.model.Observer;
 import com.java2048.model.Game;
 import com.java2048.model.GameStatus;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Formatter;
 import javafx.scene.control.TextArea;
 
 /**
@@ -27,7 +26,7 @@ public class TextAreaFx extends TextArea implements Observer {
         }
         this.observable = (Game) observable;
 
-        this.setPrefWidth(215);
+        this.setPrefWidth(220);
         this.setPrefHeight(278);
         this.setEditable(false);
 

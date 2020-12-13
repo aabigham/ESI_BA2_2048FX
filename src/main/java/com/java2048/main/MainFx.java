@@ -5,7 +5,6 @@ import com.java2048.view.fx.VBoxForScene;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**

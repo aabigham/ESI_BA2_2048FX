@@ -1,4 +1,4 @@
-package com.java2048.view.fx;
+package com.java2048.model;
 
 /**
  * A class can implement the Observer interface when it wants to be informed of

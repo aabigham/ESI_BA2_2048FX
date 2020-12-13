@@ -1,6 +1,5 @@
 package com.java2048.model;
 
-import com.java2048.view.fx.Observer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +12,10 @@ import java.util.List;
  */
 public class Game implements Model, Observable {
 
-    Board board;
-    GameStatus status;
-    int score;
-    boolean couldMove;
+    private Board board;
+    private GameStatus status;
+    private int score;
+    private boolean couldMove;
     private final List<Observer> observers;
 
     /**

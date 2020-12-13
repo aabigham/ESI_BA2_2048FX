@@ -1,5 +1,6 @@
 package com.java2048.view.fx;
 
+import com.java2048.model.Observer;
 import com.java2048.model.Game;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;

@@ -11,8 +11,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
- * This class creates the main HBox (root) containing every below him in the
- * hierachy.
+ * This class creates the main view (vbox root) containing every element below
+ * him in the hierachy.
  *
  * @author Amine-Ayoub Bigham {@literal <g54985@etu.he2b.be>}
  */
